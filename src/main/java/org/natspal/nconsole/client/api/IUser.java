@@ -30,7 +30,7 @@ public interface IUser extends ISecretEntity<IUserConfig> {
     public String getAccountIdKey();
 
     /**
-     * @param accountName the accountId to set
+     * @param accountIdKey the accountId to set
      */
     @JsonProperty("account_idkey")
     public void setAccountIdKey(String accountIdKey);

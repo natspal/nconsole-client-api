@@ -35,7 +35,7 @@ public interface IAccount extends ISecretEntity<IAccountConfig> {
      * @param operatorIdKey the operatorIdKey to set
      */
     @JsonProperty("operator_idkey")
-    public void setOperatorIdKey(String operatorId);
+    public void setOperatorIdKey(String operatorIdKey);
    
     
 

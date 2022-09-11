@@ -4,6 +4,7 @@
 .project
 .gradle/*
 .settings/
+build/*
 
 # Log file
 *.log

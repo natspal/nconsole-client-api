@@ -23,13 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public interface ISecretEntity<T> {
     
     /**
-    * @return the jwtid
+    * @return the jwtId
     */
    @JsonProperty("jti")
    public String getJwtId();
 
    /**
-    * @param jwtid the jwtid to set
+    * @param jwtId the jwtId to set
     */
    @JsonProperty("jti")
    //@JsonIgnore

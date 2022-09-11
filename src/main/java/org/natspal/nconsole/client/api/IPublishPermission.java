@@ -27,7 +27,7 @@ public interface IPublishPermission {
     public String[] getAllow();
     
     /**
-     * set the allowed subjects
+     * @param allow set the allowed subjects
      */
     @JsonProperty("allow")
     public void setAllow(String[] allow) ;
@@ -39,7 +39,7 @@ public interface IPublishPermission {
     public String[] getDeny();
     
     /**
-     * set the denied subjects
+     * @param deny set the denied subjects
      */
     @JsonProperty("deny")
     public void setDeny(String[] deny) ;
