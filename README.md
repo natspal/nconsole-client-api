@@ -15,6 +15,3 @@ NConsole api interfaces to interact between persistence storage and web apis.
 
 Unless otherwise noted, the NATS source files are distributed
 under the Apache Version 2.0 license found in the LICENSE file.
-
-
-https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg
