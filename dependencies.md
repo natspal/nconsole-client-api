@@ -11,20 +11,21 @@ This file lists the dependencies used in this repository.
 
 #### Test Dependencies
 
-| Dependency                                      | License                                 |
-|-------------------------------------------------|-----------------------------------------|
-| org.apiguardian:apiguardian-api:1.1.0           | Apache 2.0 License                      |
-| org.junit.jupiter:junit-jupiter:5.9.0           | Eclipse Public License v2.0             |
-| org.junit:junit-bom:5.9.0                       | Eclipse Public License v2.0             |
-| org.junit.jupiter:junit-jupiter:5.9.0           | Eclipse Public License v2.0             |
-| org.junit.jupiter:junit-jupiter-api:5.9.0       | Eclipse Public License v2.0             |
-| org.junit.jupiter:junit-jupiter-api:5.9.0       | Eclipse Public License v2.0             |
-| org.junit.jupiter:junit-jupiter-engine:5.9.0    | Eclipse Public License v2.0             |
-| org.junit.jupiter:junit-jupiter-params:5.9.0    | Eclipse Public License v2.0             |
-| org.junit.platform:junit-platform-commons:1.9.0 | Eclipse Public License v2.0             |
-| org.junit.platform:junit-platform-engine:1.9.0  | Eclipse Public License v2.0             |
-| junit:junit:3.8.1								  | Eclipse Public License v1.0             |
-| org.opentest4j:opentest4j:1.2.0                 | Apache 2.0 License                      |
+| Dependency                                        | License                                 |
+|---------------------------------------------------|-----------------------------------------|
+| com.jayway.jsonpath:json-path:2.7.0               | Apache 2.0 License					      |
+| com.fasterxml.jackson.core:jackson-databind:2.13.4| Apache 2.0 License                      |
+| org.apiguardian:apiguardian-api:1.1.0             | Apache 2.0 License                      |
+| org.junit.jupiter:junit-jupiter:5.9.0             | Eclipse Public License v2.0             |
+| org.junit:junit-bom:5.9.0                         | Eclipse Public License v2.0             |
+| org.junit.jupiter:junit-jupiter:5.9.0             | Eclipse Public License v2.0             |
+| org.junit.jupiter:junit-jupiter-api:5.9.0         | Eclipse Public License v2.0             |
+| org.junit.jupiter:junit-jupiter-engine:5.9.0      | Eclipse Public License v2.0             |
+| org.junit.jupiter:junit-jupiter-params:5.9.0      | Eclipse Public License v2.0             |
+| org.junit.platform:junit-platform-commons:1.9.0   | Eclipse Public License v2.0             |
+| org.junit.platform:junit-platform-engine:1.9.0    | Eclipse Public License v2.0             |
+| org.junit.vintage:junit-vintage-engine:5.9.0      | Eclipse Public License v2.0             |
+| org.opentest4j:opentest4j:1.2.0                   | Apache 2.0 License                      |
 
 #### Build / Coverage Dependencies
 

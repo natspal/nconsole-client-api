@@ -10,29 +10,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package org.natspal.nconsole.client.api;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-/****
+package org.natspal.nconsole.client.exceptions;
+/***
  * 
  * @author Amit K Gupta
  *
  */
-public interface IOperator<T>  extends ISecretEntity<T> {
-
-    /**
-     * @return the createSystemAccount
-     */
-    @JsonProperty("create_system_account")
-    @JsonIgnore
-    public boolean isCreateSystemAccount();
-
-    /**
-     * @param createSystemAccount the createSystemAccount to set
-     */
-    @JsonProperty("create_system_account")
-    public void setCreateSystemAccount(boolean createSystemAccount);
-   
+public class JWTDecodeException extends RuntimeException {
     
+    
+    private static final long serialVersionUID = 566184395257277266L;
+
+    public JWTDecodeException(String message) {
+        this(message, null);
+    }
+    
+    public JWTDecodeException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

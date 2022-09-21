@@ -74,7 +74,7 @@ public interface IImport {
 	/**
 	 * @return the type
 	 */
-	@JsonProperty("subject")
+	@JsonProperty("type")
 	public ExportType getType();
 
 	/**

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  */
 
-public interface IAccount extends ISecretEntity<IAccountConfig> {
+public interface IAccount<T> extends ISecretEntity<T> {
     
     /**
      * @return the operatorIdKey

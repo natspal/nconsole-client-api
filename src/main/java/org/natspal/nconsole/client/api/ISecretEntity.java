@@ -45,8 +45,20 @@ public interface ISecretEntity<T> {
     * @param issueAt the issueAt to set
     */
    @JsonProperty("iat")
-   //@JsonIgnore
    public void setIssueAt(long issueAt);
+   
+   /**
+    * @return the expiry
+    */
+   @JsonProperty("exp")
+   public long getExpiry();
+
+   /**
+    * @param expiry the expiry to set
+    */
+   @JsonProperty("exp")
+   public void setExpiry(long expiry);
+   
    /**
     * @return the issuer
     */
