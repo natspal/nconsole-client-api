@@ -21,7 +21,7 @@ import org.natspal.nconsole.client.api.IUserConfig;
  *
  */
 
-public class User extends AbstractSecretEntity<IUserConfig> implements IUser {
+public class User extends AbstractSecretEntity<UserConfig> implements IUser<UserConfig> {
 
 	private String accountIdKey; 
 	
@@ -31,13 +31,13 @@ public class User extends AbstractSecretEntity<IUserConfig> implements IUser {
 	
 	
     public User(String accountIdKey,String jwt, String jwtId, long issueAt, long expiry, String issuer, String name, String subject,
-            IUserConfig nats) {
+            UserConfig nats) {
         super(jwt, jwtId, issueAt, expiry, issuer, name, subject, nats);
         this.accountIdKey = accountIdKey;
     }
     
     public User(String accountIdKey,String jwtId, long issueAt, long expiry, String issuer, String name, String subject,
-            IUserConfig nats) {
+            UserConfig nats) {
         super(null, jwtId, issueAt, expiry, issuer, name, subject, nats);
         this.accountIdKey = accountIdKey;
     }

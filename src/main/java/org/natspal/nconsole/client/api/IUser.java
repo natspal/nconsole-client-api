@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Amit K Gupta
  *
  */
-public interface IUser extends ISecretEntity<IUserConfig> {
+public interface IUser<T> extends ISecretEntity<T> {
 
     
     /**
