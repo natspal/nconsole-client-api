@@ -23,7 +23,12 @@ import org.natspal.nconsole.client.api.IImport;
 
 public class Import implements IImport {
 
-	private String name;
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 6599605854382318520L;
+
+    private String name;
 	
 	private String subject;
 	

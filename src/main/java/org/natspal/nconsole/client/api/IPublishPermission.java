@@ -12,13 +12,14 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api;
 
+import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 /****
  * 
  * @author Amit K Gupta
  *
  */
-public interface IPublishPermission {
+public interface IPublishPermission extends Serializable {
     
     /**
      * @return the allowed subjects

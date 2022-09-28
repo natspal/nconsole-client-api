@@ -34,12 +34,14 @@ public class AccountDefaultPermission implements IAccountDefaultPermission {
     public AccountDefaultPermission() {
     }
     
-    public AccountDefaultPermission(PublishPermission publish, SubscribePermission subscribe) {
+    public AccountDefaultPermission(IPublishPermission publish, ISubscribePermission subscribe) {
         this.publish = publish;
         this.subscribe = subscribe;
     }
     
-    
+    // --------------------------------------------
+    // setter getter methods
+    // --------------------------------------------
     /**
      * @return the publish
      */

@@ -23,6 +23,8 @@ import org.natspal.nconsole.client.api.ISecretEntity;
 
 public abstract class AbstractSecretEntity<T> implements ISecretEntity<T> {
 
+    private static final long serialVersionUID = -366967744484889470L;
+
     private String jwt;
     
     private String jwtId;

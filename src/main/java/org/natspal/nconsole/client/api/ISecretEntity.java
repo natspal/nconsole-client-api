@@ -12,6 +12,7 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api;
 
+import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 /****
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * 
  */
-public interface ISecretEntity<T> {
+public interface ISecretEntity<T> extends Serializable {
     
     /**
     * @return the jwtId

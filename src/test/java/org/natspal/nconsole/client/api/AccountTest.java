@@ -26,9 +26,12 @@ import java.util.List;
 import org.junit.Test;
 import org.natspal.nconsole.client.api.impl.Account;
 import org.natspal.nconsole.client.api.impl.AccountConfig;
+import org.natspal.nconsole.client.api.impl.AccountDefaultPermission;
 import org.natspal.nconsole.client.api.impl.AccountLimits;
 import org.natspal.nconsole.client.api.impl.Export;
 import org.natspal.nconsole.client.api.impl.Import;
+import org.natspal.nconsole.client.api.impl.PublishPermission;
+import org.natspal.nconsole.client.api.impl.SubscribePermission;
 import org.natspal.nconsole.client.jwt.Mapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -229,7 +232,13 @@ public class AccountTest {
         
         // Default permission
         
-        //IAccountDefaultPermission accountDefaultPermission = new AccountDefaultPermission();
+        IPublishPermission publishPermission = new PublishPermission(new String[] {"amit.>"}, new String[]{"gupta.>"});
+
+        ISubscribePermission subscribePermission = new SubscribePermission(new String[] {"foo.>"}, new String[] {"bar.>"});
+        
+        IAccountDefaultPermission accountDefaultPermission = new AccountDefaultPermission(publishPermission,subscribePermission);
+       
+        accountConfig.setDefaultPermissions(accountDefaultPermission);
         
         //List of exports
         
@@ -309,6 +318,17 @@ public class AccountTest {
         assertEquals("amitaccount", doc.read("$.name"));
         
         assertEquals("ACHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM", doc.read("$.sub"));
+        
+        //assert default permission
+        assertNotNull(doc.read("$.nats.default_permissions"));
+        assertNotNull(doc.read("$.nats.default_permissions.pub"));
+        
+        assertEquals("amit.>",doc.read("$.nats.default_permissions.pub.allow[0]"));
+        assertEquals("gupta.>",doc.read("$.nats.default_permissions.pub.deny[0]"));
+        
+        assertNotNull(doc.read("$.nats.default_permissions.sub"));
+        assertEquals("foo.>",doc.read("$.nats.default_permissions.sub.allow[0]"));
+        assertEquals("bar.>",doc.read("$.nats.default_permissions.sub.deny[0]"));
         
         
         //assert exports

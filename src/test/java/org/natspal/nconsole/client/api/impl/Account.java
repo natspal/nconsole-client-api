@@ -21,6 +21,8 @@ import org.natspal.nconsole.client.api.IAccount;
  */
 public class Account extends AbstractSecretEntity<AccountConfig>  implements IAccount<AccountConfig>{
     
+    private static final long serialVersionUID = 3987982494302892772L;
+    
     private String operatorIdKey; 
     
     // --------------------------------------------

@@ -13,6 +13,7 @@
 
 package org.natspal.nconsole.client.api;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  */
 
-public interface IAccountConfig {
+public interface IAccountConfig extends Serializable{
 
 	/**
      * @return the exports
