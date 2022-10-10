@@ -43,6 +43,8 @@ public interface IPersistentContext {
     
     void deleteSeedByIdentityKey(String idKey) throws DataAccessException;
     
+    void deleteSeedBySigningKey(String idKey) throws DataAccessException;
+    
     void deleteUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey)  throws DataAccessException;
     
     void deleteAccountByIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
@@ -110,7 +112,7 @@ public interface IPersistentContext {
     
     List<SimpleNKeyPair> findSigningSeedsByIdKey(String idKey) throws DataAccessException;
     
-    void saveSeed(String idKey, String signingKey, String seed, EntityType entityType,KeyType keyType) throws DataAccessException;
+    SimpleNKeyPair saveSeed(String idKey, String signingKey, String seed, EntityType entityType,KeyType keyType) throws DataAccessException;
     
     IAccount updateAccount(IAccount name) throws DataAccessException;
     
