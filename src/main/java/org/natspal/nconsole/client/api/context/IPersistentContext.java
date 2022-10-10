@@ -18,6 +18,7 @@ import org.natspal.nconsole.client.api.IOperator;
 import org.natspal.nconsole.client.api.IUser;
 import org.natspal.nconsole.client.api.KeyType;
 import org.natspal.nconsole.client.api.SimpleNKeyPair;
+import org.natspal.nconsole.client.exceptions.DataAccessException;
 import org.natspal.nconsole.client.api.EntityType;
 /***
  * 
@@ -26,94 +27,94 @@ import org.natspal.nconsole.client.api.EntityType;
  */
 public interface IPersistentContext {
     
-    List<IOperator> findAllOperators();
+    List<IOperator> findAllOperators() throws DataAccessException;
     
-    IAccount createAccount(IAccount name); 
+    IAccount createAccount(IAccount name) throws DataAccessException; 
     
-    IOperator createOperator(IOperator name);
+    IOperator createOperator(IOperator name) throws DataAccessException;
     
-    IOperator updateOperator(IOperator name);
+    IOperator updateOperator(IOperator name) throws DataAccessException;
     
     IUser createUser(IUser name, String accountIdKey);
     
-    boolean deleteAccount(String name); 
+    void deleteAccountByNameAndOperatorIdKey(String name,String operatorIdKey) throws DataAccessException; 
     
-    boolean deleteOperator(String name); 
+    void deleteOperatorByName(String name) throws DataAccessException; 
     
-    void deleteSeedByIdentityKey(String idKey);
+    void deleteSeedByIdentityKey(String idKey) throws DataAccessException;
     
-    void deleteUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey);
+    void deleteUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey)  throws DataAccessException;
     
-    void deleteAccountByIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey);
+    void deleteAccountByIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
     
-    void deleteOperatorByIdKey(String operatorIdKey);
+    void deleteOperatorByIdKey(String operatorIdKey) throws DataAccessException;
     
-    IAccount findAccountByName(String name); 
+    IAccount findAccountByName(String name) throws DataAccessException; 
     
-    String findAccountIdentitySeedById(String id); 
+    String findAccountIdentitySeedById(String id) throws DataAccessException; 
     
-    String findAccountIdentitySeedByName(String name); 
+    String findAccountIdentitySeedByName(String name) throws DataAccessException; 
     
-    String findAccountJwtByIdKeyAndOperatorIdKey(String idKey,String operatorIdKey); 
+    String findAccountJwtByIdKeyAndOperatorIdKey(String idKey,String operatorIdKey) throws DataAccessException;
     
-    String findAccountJwtByName(String accountName,String operatorName);
+    IAccount findAccountByNameAndOperatorIdKey(String name,String operatorIdKey) throws DataAccessException;
     
-    String findAccountJwtByNameAndIssuerIdentityKey(String accountName,String operatorIdKey);
+    String findAccountJwtByNameAndOperatorName(String accountName,String operatorName) throws DataAccessException;
     
-    String findAccountLatestSigningSeedById(String id);
+    String findAccountLatestSigningSeedById(String id) throws DataAccessException;
     
-    String findAccountLatestSigningSeedByName(String name);
+    String findAccountLatestSigningSeedByName(String name) throws DataAccessException;
     
-    String[] findAccountSigningKeysById(String id);
+    String[] findAccountSigningKeysById(String id) throws DataAccessException;
     
-    String[] findAccountSigningKeysByName(String name);
+    String[] findAccountSigningKeysByName(String name) throws DataAccessException;
     
-    IOperator findOperatorByName(String name);
+    IOperator findOperatorByName(String name) throws DataAccessException;
     
-    String findOperatorIdentitySeedById(String id);
+    IOperator findOperatorByIdKey(String idKey) throws DataAccessException;
     
-    String findOperatorIdentitySeedByName(String name);
+    String findOperatorIdentitySeedByIdKey(String idKey) throws DataAccessException;
     
-    String findOperatorJwtByIdKey(String idKey);
+    String findOperatorIdentitySeedByName(String name) throws DataAccessException;
     
-    String findOperatorJwtByName(String operatorName);
+    String findOperatorJwtByIdKey(String idKey) throws DataAccessException;
     
-    String findOperatorJwtBySubject(String subject);
+    String findOperatorJwtByName(String operatorName) throws DataAccessException;
     
-    String findOperatorLatestSigningSeedById(String id);
+    String findOperatorLatestSigningSeedByIdKey(String idKey) throws DataAccessException;
     
     
-    String findOperatorLatestSigningSeedByName(String name);
+    String findOperatorLatestSigningSeedByName(String name) throws DataAccessException;
     
-    String[] findOperatorSigningKeysById(String id);
+    String[] findOperatorSigningKeysByIdKey(String idKey) throws DataAccessException;
     
-    String[] findOperatorSigningKeysByName(String name);
+    String[] findOperatorSigningKeysByName(String name) throws DataAccessException;
     
-    IUser findUserByName(String name,String accountName);
+    IUser findUserByName(String name,String accountName) throws DataAccessException;
     
-    String findUserJwtById(String id,String accountName);
+    String findUserJwtById(String id,String accountName) throws DataAccessException;
     
-    String findUserJwtByIdKeyAndAccountIdKey(String userIdKey,String accountIdKey,String operatorIdKey);
+    String findUserJwtByIdKeyAndAccountIdKey(String userIdKey,String accountIdKey,String operatorIdKey) throws DataAccessException;
     
-    String findUserSeedById(String id,String accountName);
+    String findUserSeedById(String id,String accountName) throws DataAccessException;
     
-    String findUserSeedByName(String name,String accountName);
+    String findUserSeedByName(String name,String accountName) throws DataAccessException;
     
-    List<IAccount> listAccountsByOperatorIdKey(String idKey);
+    List<IAccount> findAllAccountsByOperatorIdKey(String idKey) throws DataAccessException;
     
-    List<IUser> listUsersByAccountIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey);
+    List<IUser> findAllUsersByAccountIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
     
-    SimpleNKeyPair findSigningSeedBySigningKey(String signingKey);
+    SimpleNKeyPair findSigningSeedBySigningKey(String signingKey) throws DataAccessException;
     
-    SimpleNKeyPair findIdSeedByIdKey(String idKey);
+    SimpleNKeyPair findIdSeedByIdKey(String idKey) throws DataAccessException;
     
-    List<SimpleNKeyPair> findSigningSeedsByIdKey(String idKey);
+    List<SimpleNKeyPair> findSigningSeedsByIdKey(String idKey) throws DataAccessException;
     
-    void saveSeed(String idKey, String signingKey, String seed, EntityType entityType,KeyType keyType);
+    void saveSeed(String idKey, String signingKey, String seed, EntityType entityType,KeyType keyType) throws DataAccessException;
     
-    IAccount updateAccount(IAccount name);
+    IAccount updateAccount(IAccount name) throws DataAccessException;
     
-    IUser updateUser(IUser name);
+    IUser updateUser(IUser name) throws DataAccessException;
     
     
     
