@@ -51,8 +51,6 @@ public interface IPersistentContext {
     
     void deleteOperatorByIdKey(String operatorIdKey) throws DataAccessException;
     
-    IAccount findAccountByName(String name) throws DataAccessException; 
-    
     String findAccountIdentitySeedById(String id) throws DataAccessException; 
     
     String findAccountIdentitySeedByName(String name) throws DataAccessException; 
@@ -61,7 +59,7 @@ public interface IPersistentContext {
     
     IAccount findAccountByNameAndOperatorIdKey(String name,String operatorIdKey) throws DataAccessException;
     
-    String findAccountJwtByNameAndOperatorName(String accountName,String operatorName) throws DataAccessException;
+    IAccount findAccountByIdKeyAndOperatorIdKey(String idKey,String operatorIdKey) throws DataAccessException;
     
     String findAccountLatestSigningSeedById(String id) throws DataAccessException;
     
