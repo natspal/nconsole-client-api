@@ -35,7 +35,7 @@ public interface IPersistentContext {
     
     IOperator updateOperator(IOperator name) throws DataAccessException;
     
-    IUser createUser(IUser name, String accountIdKey);
+    IUser createUser(IUser name, String operatorIdKey);
     
     void deleteAccountByNameAndOperatorIdKey(String name,String operatorIdKey) throws DataAccessException; 
     
@@ -46,6 +46,8 @@ public interface IPersistentContext {
     void deleteSeedBySigningKey(String idKey) throws DataAccessException;
     
     void deleteUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey)  throws DataAccessException;
+    
+    void deleteUserByNameAndAccountIdKeyAndOperatorIdKey(String userName,String accountIdKey,String operatorIdKey)  throws DataAccessException;
     
     void deleteAccountByIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
     
@@ -90,11 +92,13 @@ public interface IPersistentContext {
     
     String[] findOperatorSigningKeysByName(String name) throws DataAccessException;
     
-    IUser findUserByName(String name,String accountName) throws DataAccessException;
+    IUser findUserByNameAndAccountIdKeyAndOperatorIdKey(String userName,String accountIdKey,String operatorIdKey) throws DataAccessException;
     
-    String findUserJwtById(String id,String accountName) throws DataAccessException;
+    IUser findUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey) throws DataAccessException;
     
     String findUserJwtByIdKeyAndAccountIdKey(String userIdKey,String accountIdKey,String operatorIdKey) throws DataAccessException;
+    
+    String findUserJwtByNameAndAccountIdKey(String userName,String accountIdKey,String operatorIdKey) throws DataAccessException;
     
     String findUserSeedById(String id,String accountName) throws DataAccessException;
     
@@ -114,7 +118,7 @@ public interface IPersistentContext {
     
     IAccount updateAccount(IAccount name) throws DataAccessException;
     
-    IUser updateUser(IUser name) throws DataAccessException;
+    IUser updateUser(IUser name,String operatorIdKey) throws DataAccessException;
     
     
     
