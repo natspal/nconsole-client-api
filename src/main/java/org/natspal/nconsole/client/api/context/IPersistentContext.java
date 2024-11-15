@@ -30,7 +30,7 @@ import org.natspal.nconsole.client.api.EntityType;
  */
 public interface IPersistentContext {
     
-    List<IOperator<IOperatorConfig>> findAllOperators() throws DataAccessException;
+    List<IOperator> findAllOperators() throws DataAccessException;
     
     IAccount<IAccountConfig> createAccount(IAccount<IAccountConfig> name) throws DataAccessException; 
     
@@ -107,9 +107,9 @@ public interface IPersistentContext {
     
     String findUserSeedByName(String name,String accountName) throws DataAccessException;
     
-    List<IAccount<IAccountConfig>> findAllAccountsByOperatorIdKey(String idKey) throws DataAccessException;
+    List<IAccount> findAllAccountsByOperatorIdKey(String idKey) throws DataAccessException;
     
-    List<IUser<IUserConfig>> findAllUsersByAccountIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
+    List<IUser> findAllUsersByAccountIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
     
     SimpleNKeyPair findSigningSeedBySigningKey(String signingKey) throws DataAccessException;
     
