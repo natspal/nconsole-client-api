@@ -12,6 +12,7 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api.impl;
 
+import org.natspal.nconsole.client.api.IAuditMetadata;
 import org.natspal.nconsole.client.api.ISecretEntity;
 
 /***
@@ -25,6 +26,10 @@ public abstract class AbstractSecretEntity<T> implements ISecretEntity<T> {
 
     private static final long serialVersionUID = -366967744484889470L;
 
+    private IAuditMetadata auditMetadata;
+    
+    private String id;
+    
     private String jwt;
     
     private String jwtId;
@@ -60,6 +65,29 @@ public abstract class AbstractSecretEntity<T> implements ISecretEntity<T> {
         this.name = name;
         this.subject = subject;
         this.nats = nats;
+    }
+    
+	public void setAuditMetadata(IAuditMetadata auditMetadata) {
+		this.auditMetadata = auditMetadata;
+		
+	}
+
+	public IAuditMetadata getAuditMetadata() {
+		return auditMetadata;
+	}
+	
+	/**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param jwt the jwt to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
     
     /**

@@ -12,8 +12,11 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api.impl;
 
+import java.util.List;
+
 import org.natspal.nconsole.client.api.EntityType;
 import org.natspal.nconsole.client.api.IOperatorConfig;
+import org.natspal.nconsole.client.api.ISigningKey;
 
 /**
  * 
@@ -23,11 +26,15 @@ import org.natspal.nconsole.client.api.IOperatorConfig;
 
 public class OperatorConfig implements IOperatorConfig {
     
-    private String accountServerUrl;
+    private static final long serialVersionUID = -9077893197601880448L;
+
+	private String accountServerUrl;
     
     private String[] operatorServiceUrls;
     
     private String[] signingKeys;
+    
+    private List<? extends ISigningKey> signingKeyList;
     
     private boolean strictSigningKeyUsage;
     
@@ -37,7 +44,30 @@ public class OperatorConfig implements IOperatorConfig {
     
     private int version;
 
-    /**
+    // --------------------------------------------
+    // Constructors
+    // --------------------------------------------
+    
+    public OperatorConfig() {
+    	
+    }
+    
+    
+    public OperatorConfig(String accountServerUrl, String[] operatorServiceUrls, String[] signingKeys,
+			List<? extends ISigningKey> signingKeyList, boolean strictSigningKeyUsage, String systemAccount,
+			EntityType type, int version) {
+		super();
+		this.accountServerUrl = accountServerUrl;
+		this.operatorServiceUrls = operatorServiceUrls;
+		this.signingKeys = signingKeys;
+		this.signingKeyList = signingKeyList;
+		this.strictSigningKeyUsage = strictSigningKeyUsage;
+		this.systemAccount = systemAccount;
+		this.type = type;
+		this.version = version;
+	}
+
+	/**
      * @return the accountServerUrl
      */
     public String getAccountServerUrl() {
@@ -134,6 +164,16 @@ public class OperatorConfig implements IOperatorConfig {
     public void setVersion(int version) {
         this.version = version;
     }
+
+	@Override
+	public List<? extends ISigningKey> getSigningKeyList() {
+		return signingKeyList;
+	}
+
+	@Override
+	public void setSigningKeyList(List<? extends ISigningKey> signingKeyList) {
+		this.signingKeyList = signingKeyList;
+	}
     
     
 }

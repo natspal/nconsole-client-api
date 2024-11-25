@@ -13,7 +13,6 @@
 package org.natspal.nconsole.client.api.impl;
 
 import org.natspal.nconsole.client.api.IUser;
-import org.natspal.nconsole.client.api.IUserConfig;
 
 /**
  * 
@@ -23,6 +22,8 @@ import org.natspal.nconsole.client.api.IUserConfig;
 
 public class User extends AbstractSecretEntity<UserConfig> implements IUser<UserConfig> {
 
+	private static final long serialVersionUID = 9189391926212810696L;
+	
 	private String accountIdKey; 
 	
 	public User() {

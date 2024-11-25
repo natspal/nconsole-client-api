@@ -17,6 +17,8 @@ package org.natspal.nconsole.client.jwt;
  *
  */
 
+//TODO need to sttructure into commond properties and nested interface like account, user and operator
+
 public interface JwtClaims {
 
     //Header
@@ -54,6 +56,13 @@ public interface JwtClaims {
     String ALLOW = "allow";
     String DENY = "deny";
     
+    interface OPERATOR {
+    	String ACCOUNT_SERVER_URL = "account_server_url";
+    	String OPERATOR_SERVICE_URLS = "operator_service_urls";
+    	String STRICT_SIGNING_KEY_USAGE = "strict_signing_key_usage";
+    	String SYSTEM_ACCOUNT = "system_account";
+    	
+    }
     
     
     

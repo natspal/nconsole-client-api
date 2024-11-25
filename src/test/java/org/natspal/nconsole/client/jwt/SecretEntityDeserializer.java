@@ -252,4 +252,52 @@ abstract class SecretEntityDeserializer<T> extends StdDeserializer<T> {
         Map<String, JsonNode> result = mapper.convertValue(node, new TypeReference<Map<String, JsonNode>>(){});
         return result;
     }
+    
+    /**
+     * 
+     * @param tree json tree
+     * @param claimName teh claim name
+     * @return return the list of striing 
+     * @throws JWTDecodeException
+     */
+    
+    List<Map<String, JsonNode>> getListMap(Map<String, JsonNode> tree, String claimName) throws JWTDecodeException {
+    	if(tree==null) {
+        	return null;
+        }
+    	JsonNode node = tree.get(claimName);
+        if (node == null || node.isNull() || !(node.isArray() || node.isTextual())) {
+            return null;
+        }
+        ObjectMapper mapper = new ObjectMapper();
+
+        List<Map<String, JsonNode>> list = new ArrayList<>(node.size());
+        for (int i = 0; i < node.size(); i++) {
+            try {
+                list.add(mapper.convertValue(node.get(i), new TypeReference<Map<String, JsonNode>>(){}));
+            } catch (Exception e) {
+                throw new JWTDecodeException("Couldn't map the Claim's array contents", e);
+            }
+        }
+        return list;
+    }
+    
+    /**
+    * 
+    * @param tree json tree
+    * @param claimName the claim name
+    * @return return the boolean
+    */
+   
+   Boolean getBoolean(Map<String, JsonNode> tree, String claimName) throws JWTDecodeException{
+   	if(tree==null) {
+       	return null;
+       }
+   	JsonNode node = tree.get(claimName);
+       if (node == null || node.isNull()) {
+           return null;
+       }
+       return node.asBoolean();
+   }
+    
 }

@@ -22,6 +22,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  */
 public interface ISecretEntity<T> extends Serializable {
+	
+	/**
+     * @return the id
+     */
+    public String getId();
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id);
     
     /**
     * @return the jwtId
@@ -123,5 +133,18 @@ public interface ISecretEntity<T> extends Serializable {
    @JsonProperty("jwt")
    @JsonIgnore
    public void setJwt(String jwt);
+   
+   /**
+	* @param auditMetadata the auditMetadata to set
+	*/
+   
+   @JsonProperty("audit_meta_data")
+   public void setAuditMetadata(IAuditMetadata auditMetadata);
+	
+   /**
+	* @return the auditingMetadata
+	*/
+   @JsonProperty("audit_meta_data")
+   public IAuditMetadata getAuditMetadata();
 
 }

@@ -22,7 +22,9 @@ import org.natspal.nconsole.client.api.IOperator;
 public class Operator extends AbstractSecretEntity<OperatorConfig> implements IOperator<OperatorConfig> {
 
     
-    private boolean createSystemAccount; 
+    private static final long serialVersionUID = 2518570112631589160L;
+
+	private boolean createSystemAccount; 
     
     // --------------------------------------------
     // Constructors

@@ -13,6 +13,8 @@
 package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 /****
  * 
@@ -59,6 +61,20 @@ public interface IOperatorConfig extends Serializable {
     //@JsonIgnore
     public void setSigningKeys(String[] signingKeys);
 
+    
+    /**
+     * @return the signingKeyList
+     */
+    @JsonProperty("signing_key_list")
+    public List<? extends ISigningKey> getSigningKeyList();
+
+    /**
+     * @param signingKeyList the signingKeyList to set
+     */
+    @JsonProperty("signing_key_list")
+    //@JsonIgnore
+    public void setSigningKeyList(List<? extends ISigningKey> signingKeyList);
+    
     /**
      * @return the strictSigningKeyUsage
      */

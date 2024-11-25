@@ -28,6 +28,7 @@ import org.natspal.nconsole.client.api.impl.Account;
 import org.natspal.nconsole.client.api.impl.AccountConfig;
 import org.natspal.nconsole.client.api.impl.AccountDefaultPermission;
 import org.natspal.nconsole.client.api.impl.AccountLimits;
+import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.Export;
 import org.natspal.nconsole.client.api.impl.Import;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
@@ -45,6 +46,13 @@ public class AccountTest {
     ObjectMapper mapper = Mapper.getObjectMapper();
     
     String accountJwt = "{\n"
+    		+ "		\"audit_meta_data\" : {\n"
+    		+ "			\"create_user_id\": 1234,\n"
+    		+ "			\"update_user_id\": 4567,\n"
+    		+ "			\"create_date\": 1726642150,\n"
+    		+ "			\"update_date\": 1764562150 \n"
+    		+ "		},\n"
+    		+ "  \"id\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + " \"iat\": 1660937715,\n"
             + " \"exp\": 1726642150,\n"
             + " \"iss\": \"OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK\",\n"
@@ -112,6 +120,7 @@ public class AccountTest {
         
         
         // assert 
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", account.getId());
         assertEquals("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA", account.getJwtId());
         assertEquals(1660937715, account.getIssueAt());
         
@@ -121,6 +130,15 @@ public class AccountTest {
         assertEquals("amitaccount", account.getName());
         
         assertEquals("ACHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM", account.getSubject());
+        
+        IAuditMetadata auditMetaData = (IAuditMetadata)account.getAuditMetadata();
+        
+        assertNotNull(auditMetaData);
+        
+        assertEquals(1234,auditMetaData.getCreateUserId());
+        assertEquals(4567,auditMetaData.getUpdateUserId());
+        assertEquals(1726642150,auditMetaData.getCreateDate());
+        assertEquals(1764562150,auditMetaData.getUpdateDate());
         
         // assert nats config
         
@@ -215,6 +233,8 @@ public class AccountTest {
         
         IAccount account = new Account();
         
+        account.setId("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
+        
         account.setJwtId("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA");
         
         account.setIssueAt(1634840614);
@@ -226,6 +246,15 @@ public class AccountTest {
         account.setName("amitaccount");
         
         account.setSubject("ACHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM");
+        
+        IAuditMetadata audit_meta_data = new AuditMetadata();
+        
+        audit_meta_data.setCreateUserId(347347352);
+        audit_meta_data.setUpdateUserId(345638567);
+        audit_meta_data.setCreateDate(77868667);
+        audit_meta_data.setUpdateDate(6767676);
+        
+        account.setAuditMetadata(audit_meta_data);
         
         IAccountConfig accountConfig = new AccountConfig();
         
@@ -308,11 +337,15 @@ public class AccountTest {
         
         DocumentContext doc = JsonPath.parse(accountString);
         
+        
+        
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.id"));
+        
         assertEquals("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA", doc.read("$.jti"));
         
-        assertEquals(new Integer(1634840614), doc.read("$.iat"));
+        assertEquals(Integer.valueOf(1634840614), doc.read("$.iat"));
         
-        assertEquals(new Integer(1726642150), doc.read("$.exp"));
+        assertEquals(Integer.valueOf(1726642150), doc.read("$.exp"));
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", doc.read("$.iss"));
         assertEquals("amitaccount", doc.read("$.name"));
@@ -357,22 +390,27 @@ public class AccountTest {
         
         // assert limits
         
-        assertEquals(new Integer(100),doc.read("$.nats.limits.conn")); 
-        assertEquals(new Integer(100),doc.read("$.nats.limits.consumer"));
-        assertEquals(new Integer(-1),doc.read("$.nats.limits.data"));
-        assertEquals(new Integer(0),doc.read("$.nats.limits.disk_storage"));
-        assertEquals(new Integer(0),doc.read("$.nats.limits.mem_storage"));
-        assertEquals(new Integer(-1),doc.read("$.nats.limits.exports"));
-        assertEquals(new Integer(-1),doc.read("$.nats.limits.imports"));
-        assertEquals(new Integer(100),doc.read("$.nats.limits.leaf"));
-        assertEquals(new Integer(10000),doc.read("$.nats.limits.payload"));
-        assertEquals(new Integer(0),doc.read("$.nats.limits.streams"));
-        assertEquals(new Integer(-1),doc.read("$.nats.limits.subs"));
+        assertEquals(Integer.valueOf(100),doc.read("$.nats.limits.conn")); 
+        assertEquals(Integer.valueOf(100),doc.read("$.nats.limits.consumer"));
+        assertEquals(Integer.valueOf(-1),doc.read("$.nats.limits.data"));
+        assertEquals(Integer.valueOf(0),doc.read("$.nats.limits.disk_storage"));
+        assertEquals(Integer.valueOf(0),doc.read("$.nats.limits.mem_storage"));
+        assertEquals(Integer.valueOf(-1),doc.read("$.nats.limits.exports"));
+        assertEquals(Integer.valueOf(-1),doc.read("$.nats.limits.imports"));
+        assertEquals(Integer.valueOf(100),doc.read("$.nats.limits.leaf"));
+        assertEquals(Integer.valueOf(10000),doc.read("$.nats.limits.payload"));
+        assertEquals(Integer.valueOf(0),doc.read("$.nats.limits.streams"));
+        assertEquals(Integer.valueOf(-1),doc.read("$.nats.limits.subs"));
         assertTrue(doc.read("$.nats.limits.wildcards"));
         
         assertEquals(EntityType.account.name(),doc.read("$.nats.type"));
         
-        assertEquals(new Integer(2),doc.read("$.nats.version"));
+        assertEquals(Integer.valueOf(2),doc.read("$.nats.version"));
+        
+        assertEquals(Integer.valueOf(347347352),doc.read("$.audit_meta_data.create_user_id"));
+        assertEquals(Integer.valueOf(345638567),doc.read("$.audit_meta_data.update_user_id"));
+        assertEquals(Integer.valueOf(77868667),doc.read("$.audit_meta_data.create_date"));
+        assertEquals(Integer.valueOf(6767676),doc.read("$.audit_meta_data.update_date"));
         
         
     }

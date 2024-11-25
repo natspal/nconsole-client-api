@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
+import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
 import org.natspal.nconsole.client.api.impl.SubscribePermission;
 import org.natspal.nconsole.client.api.impl.User;
@@ -38,6 +39,13 @@ public class UserTest {
     ObjectMapper mapper = Mapper.getObjectMapper();
     
     String userJwt = "{\n"
+    		+ "		\"audit_meta_data\" : {\n"
+    		+ "			\"create_user_id\": 1234,\n"
+    		+ "			\"update_user_id\": 4567,\n"
+    		+ "			\"create_date\": 1726642150,\n"
+    		+ "			\"update_date\": 1764562150 \n"
+    		+ "		},\n"
+    		+ "  \"id\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + "  \"jti\": \"AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A\",\n"
             + "  \"iat\": 1651011888,\n"
             + "  \"exp\": 1726642150,\n"
@@ -69,6 +77,9 @@ public class UserTest {
         
         
         // assert 
+        
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", user.getId());
+        
         assertEquals("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A", user.getJwtId());
         assertEquals(1651011888, user.getIssueAt());
         
@@ -78,6 +89,15 @@ public class UserTest {
         assertEquals("u", user.getName());
         
         assertEquals("UCS7KJIXYPAQUNXFM5BQUR2CBBNV2AWEH4YTJAA2DYFCE7LXQUXA2KB7", user.getSubject());
+        
+        IAuditMetadata auditMetaData = (IAuditMetadata)user.getAuditMetadata();
+        
+        assertNotNull(auditMetaData);
+        
+        assertEquals(1234,auditMetaData.getCreateUserId());
+        assertEquals(4567,auditMetaData.getUpdateUserId());
+        assertEquals(1726642150,auditMetaData.getCreateDate());
+        assertEquals(1764562150,auditMetaData.getUpdateDate());
         
         // assert nats config
         
@@ -120,6 +140,8 @@ public class UserTest {
         
         IUser user = new User();
         
+        user.setId("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
+        
         user.setJwtId("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A");
         
         user.setIssueAt(1651011888);
@@ -131,6 +153,15 @@ public class UserTest {
         user.setName("u");
         
         user.setSubject("UCS7KJIXYPAQUNXFM5BQUR2CBBNV2AWEH4YTJAA2DYFCE7LXQUXA2KB7");
+        
+        IAuditMetadata audit_meta_data = new AuditMetadata();
+        
+        audit_meta_data.setCreateUserId(347347352);
+        audit_meta_data.setUpdateUserId(345638567);
+        audit_meta_data.setCreateDate(77868667);
+        audit_meta_data.setUpdateDate(6767676);
+        
+        user.setAuditMetadata(audit_meta_data);
         
         IUserConfig userConfig = new UserConfig();
         
@@ -161,11 +192,13 @@ public class UserTest {
         
         DocumentContext doc = JsonPath.parse(userString);
         
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.id"));
+        
         assertEquals("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A", doc.read("$.jti"));
         
-        assertEquals(new Integer(1651011888), doc.read("$.iat"));
+        assertEquals(Integer.valueOf(1651011888), doc.read("$.iat"));
         
-        assertEquals(new Integer(1726642150), doc.read("$.exp"));
+        assertEquals(Integer.valueOf(1726642150), doc.read("$.exp"));
         
         assertEquals("AC36YMF6TYR7F2RCSGOVYUBP35L6P5LHU7Q5JG2XMXK7IZ54X2QATDOY", doc.read("$.iss"));
         assertEquals("u", doc.read("$.name"));
@@ -183,14 +216,18 @@ public class UserTest {
         
         assertNotNull(doc.read("$.nats.sub"));
         
-        assertEquals(new Integer(-1),doc.read("$.nats.data"));
-        assertEquals(new Integer(10000),doc.read("$.nats.payload"));
-        assertEquals(new Integer(100),doc.read("$.nats.subs"));
+        assertEquals(Integer.valueOf(-1),doc.read("$.nats.data"));
+        assertEquals(Integer.valueOf(10000),doc.read("$.nats.payload"));
+        assertEquals(Integer.valueOf(100),doc.read("$.nats.subs"));
         
         assertEquals(EntityType.user.name(),doc.read("$.nats.type"));
         
-        assertEquals(new Integer(2),doc.read("$.nats.version"));
+        assertEquals(Integer.valueOf(2),doc.read("$.nats.version"));
         
+        assertEquals(Integer.valueOf(347347352),doc.read("$.audit_meta_data.create_user_id"));
+        assertEquals(Integer.valueOf(345638567),doc.read("$.audit_meta_data.update_user_id"));
+        assertEquals(Integer.valueOf(77868667),doc.read("$.audit_meta_data.create_date"));
+        assertEquals(Integer.valueOf(6767676),doc.read("$.audit_meta_data.update_date"));
         
     }
 }
