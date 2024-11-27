@@ -16,6 +16,7 @@ package org.natspal.nconsole.client.api.impl;
 import org.natspal.nconsole.client.api.EntityType;
 import org.natspal.nconsole.client.api.IAuditMetadata;
 import org.natspal.nconsole.client.api.ISigningKey;
+import org.natspal.nconsole.client.api.KeyType;
 
 /**
  * 
@@ -33,13 +34,15 @@ public class SigningKey implements ISigningKey {
 
 	private long expireAt;
 	
-	private String id;
+	private String guid;
 	
 	private boolean isDefault;
 	
 	private String key;
 	
 	private EntityType entityType;
+	
+	private KeyType keyType;
 	
 	// --------------------------------------------
     // Constructors
@@ -49,17 +52,18 @@ public class SigningKey implements ISigningKey {
 		
 	}
 	
-	public SigningKey(IAuditMetadata auditMetadata, String description, long issueAt, long expireAt, String id,
-			boolean isDefault, String key, EntityType entityType) {
+	public SigningKey(IAuditMetadata auditMetadata, String description, long issueAt, long expireAt, String guid,
+			boolean isDefault, String key, EntityType entityType, KeyType keyType) {
 		super();
 		this.auditMetadata = auditMetadata;
 		this.description = description;
 		this.issueAt = issueAt;
 		this.expireAt = expireAt;
-		this.id = id;
+		this.guid = guid;
 		this.isDefault = isDefault;
 		this.key = key;
 		this.entityType = entityType;
+		this.keyType = keyType;
 	}
 
 	@Override
@@ -103,13 +107,13 @@ public class SigningKey implements ISigningKey {
 	}
 
 	@Override
-	public String getId() {
-		return id;
+	public String getGuid() {
+		return guid;
 	}
 
 	@Override
-	public void setId(String id) {
-		this.id = id;
+	public void setGuid(String guid) {
+		this.guid = guid;
 	}
 
 	@Override
@@ -140,6 +144,16 @@ public class SigningKey implements ISigningKey {
 	@Override
 	public void setEntityType(EntityType entityType) {
 		this.entityType = entityType;
+	}
+
+	@Override
+	public KeyType getKeyType() {
+		return keyType;
+	}
+
+	@Override
+	public void setKeyType(KeyType keyType) {
+		this.keyType = keyType;
 	}
 
 }

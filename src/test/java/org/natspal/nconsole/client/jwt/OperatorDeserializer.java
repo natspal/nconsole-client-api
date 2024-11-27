@@ -22,9 +22,7 @@ import java.io.IOException;
 import java.util.*;
 
 import org.natspal.nconsole.client.api.EntityType;
-import org.natspal.nconsole.client.api.IAuditMetadata;
-import org.natspal.nconsole.client.api.ISigningKey;
-import org.natspal.nconsole.client.api.impl.AccountLimits;
+import org.natspal.nconsole.client.api.KeyType;
 import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.Operator;
 import org.natspal.nconsole.client.api.impl.OperatorConfig;
@@ -56,7 +54,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
             throw new JWTDecodeException("Parsing the Payload's JSON resulted on a Null map");
         }
 
-        String id = getString(tree, JsonClaims.ID);
+        String id = getString(tree, JsonClaims.GUID);
         
         String issuer = getString(tree, JwtClaims.ISSUER);
         String subject = getString(tree, JwtClaims.SUBJECT);
@@ -83,8 +81,9 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         		Boolean isDefault   = getBoolean(map, JsonClaims.SIGNING_KEY.IS_DEFAULT);
         		String  key         = getString(map, JsonClaims.SIGNING_KEY.KEY);
         		String entityType   = getString(map, JsonClaims.SIGNING_KEY.ENTITY_TYPE);
+        		String keyType   = getString(map, JsonClaims.SIGNING_KEY.KEY_TYPE);
         		
-        		SigningKey signingKey = new SigningKey(auditMetadata, description, issueAt, expireAt, sid, isDefault, key, EntityType.valueOf(entityType));
+        		SigningKey signingKey = new SigningKey(auditMetadata, description, issueAt, expireAt, sid, isDefault, key, EntityType.valueOf(entityType),KeyType.valueOf(keyType));
         		
         		signingKeyList.add(signingKey); 
         	}
@@ -125,7 +124,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         
         Operator operator = new Operator(true,jwtId, issuedAt,expiry,issuer, name, subject, operatorConfig);
         
-        operator.setId(id);
+        operator.setGuid(id);
         
         operator.setAuditMetadata(auditMetadata);
         

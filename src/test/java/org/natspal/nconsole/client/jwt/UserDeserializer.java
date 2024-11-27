@@ -18,7 +18,6 @@ import org.natspal.nconsole.client.api.EntityType;
 import org.natspal.nconsole.client.api.IPublishPermission;
 import org.natspal.nconsole.client.api.ISubscribePermission;
 import org.natspal.nconsole.client.api.impl.AuditMetadata;
-import org.natspal.nconsole.client.api.impl.Operator;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
 import org.natspal.nconsole.client.api.impl.SubscribePermission;
 import org.natspal.nconsole.client.api.impl.User;
@@ -54,7 +53,7 @@ class UserDeserializer extends SecretEntityDeserializer<User> {
             throw new JWTDecodeException("Parsing the Payload's JSON resulted on a Null map");
         }
 
-        String id = getString(tree, JsonClaims.ID);
+        String id = getString(tree, JsonClaims.GUID);
         
         String issuer = getString(tree, JwtClaims.ISSUER);
         String subject = getString(tree, JwtClaims.SUBJECT);
@@ -109,7 +108,7 @@ class UserDeserializer extends SecretEntityDeserializer<User> {
         
         User user = new User(null,jwtId, issuedAt,expiry, issuer, name, subject, userConfig);
         
-        user.setId(id);
+        user.setGuid(id);
         
         user.setAuditMetadata(auditMetadata);
 

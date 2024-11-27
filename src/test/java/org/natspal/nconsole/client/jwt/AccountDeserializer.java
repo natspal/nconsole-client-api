@@ -23,7 +23,6 @@ import org.natspal.nconsole.client.api.impl.AccountLimits;
 import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.Export;
 import org.natspal.nconsole.client.api.impl.Import;
-import org.natspal.nconsole.client.api.impl.Operator;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
 import org.natspal.nconsole.client.api.impl.SubscribePermission;
 import org.natspal.nconsole.client.exceptions.JWTDecodeException;
@@ -61,7 +60,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
 
         String operatorIdKey = getString(tree, "operator_idkey");
         
-        String id = getString(tree, JsonClaims.ID);
+        String id = getString(tree, JsonClaims.GUID);
         
         String issuer = getString(tree, JwtClaims.ISSUER);
         String subject = getString(tree, JwtClaims.SUBJECT);
@@ -112,7 +111,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
         
         Account account = new Account(operatorIdKey,jwtId, issuedAt,expiry, issuer, name, subject, accountConfig);
         
-        account.setId(id);
+        account.setGuid(id);
         
         account.setAuditMetadata(auditMetadata);
 

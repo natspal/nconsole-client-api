@@ -79,14 +79,14 @@ public abstract class AbstractSecretEntity<T> implements ISecretEntity<T> {
 	/**
      * @return the id
      */
-    public String getId() {
+    public String getGuid() {
         return id;
     }
 
     /**
      * @param jwt the jwt to set
      */
-    public void setId(String id) {
+    public void setGuid(String id) {
         this.id = id;
     }
     

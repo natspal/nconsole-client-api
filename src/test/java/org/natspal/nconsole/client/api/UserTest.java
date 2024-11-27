@@ -45,7 +45,7 @@ public class UserTest {
     		+ "			\"create_date\": 1726642150,\n"
     		+ "			\"update_date\": 1764562150 \n"
     		+ "		},\n"
-    		+ "  \"id\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
+    		+ "  \"guid\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + "  \"jti\": \"AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A\",\n"
             + "  \"iat\": 1651011888,\n"
             + "  \"exp\": 1726642150,\n"
@@ -78,7 +78,7 @@ public class UserTest {
         
         // assert 
         
-        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", user.getId());
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", user.getGuid());
         
         assertEquals("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A", user.getJwtId());
         assertEquals(1651011888, user.getIssueAt());
@@ -140,7 +140,7 @@ public class UserTest {
         
         IUser user = new User();
         
-        user.setId("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
+        user.setGuid("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
         
         user.setJwtId("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A");
         
@@ -192,7 +192,7 @@ public class UserTest {
         
         DocumentContext doc = JsonPath.parse(userString);
         
-        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.id"));
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.guid"));
         
         assertEquals("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A", doc.read("$.jti"));
         

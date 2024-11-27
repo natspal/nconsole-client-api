@@ -49,7 +49,7 @@ public class OperatorTest {
     		+ "			\"create_date\": 1726642150,\n"
     		+ "			\"update_date\": 1764562150 \n"
     		+ "		},\n"
-    		+ "  \"id\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
+    		+ "  \"guid\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + "  \"jti\": \"S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA\",\n"
             + "  \"iat\": 1634840614,\n"
             + "  \"exp\": 1726642150,\n"
@@ -77,7 +77,8 @@ public class OperatorTest {
             + "  	\"id\": \"key-1234567890abcdef\",\n"
             + "  	\"is_default\": true,\n"
             + "  	\"key\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ\",\n"
-            + "  	\"entity_type\": \"operator\"\n"
+            + "  	\"entity_type\": \"operator\",\n"
+            + "  	\"key_type\": \"sign\"\n"
             + "		}],"
             + "     \"strict_signing_key_usage\": true, \n"
             + "    \"system_account\": \"ACK5GDGC5RYTIVBHEELIPQYY6GABNSMB2BCFSMWHXV3IEFB2VSQ2ADE7\",\n"
@@ -103,7 +104,7 @@ public class OperatorTest {
         
         
         // assert 
-        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", operator.getId());
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", operator.getGuid());
         assertEquals("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA", operator.getJwtId());
         assertEquals(1634840614, operator.getIssueAt());
         
@@ -136,10 +137,11 @@ public class OperatorTest {
         assertEquals("Primary signing key for production environment",signingKey.getDescription());
         assertEquals(1698203628000l,signingKey.getIssueAt());
         assertEquals(1713763628000l,signingKey.getExpireAt());
-        assertEquals("key-1234567890abcdef",signingKey.getId());
+        assertEquals("key-1234567890abcdef",signingKey.getGuid());
         assertEquals(true,signingKey.isDefault());
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",signingKey.getKey());
         assertEquals(EntityType.operator,signingKey.getEntityType());
+        assertEquals(KeyType.sign,signingKey.getKeyType());
         
         
         
@@ -176,7 +178,7 @@ public class OperatorTest {
         
         IOperator operator = new Operator();
         
-        operator.setId("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
+        operator.setGuid("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
         operator.setJwtId("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA");
         
         operator.setIssueAt(1634840614);
@@ -218,7 +220,7 @@ public class OperatorTest {
         auditMetadata.setCreateUserId(2452675);
         auditMetadata.setUpdateUserId(5683636);
         
-        SigningKey signingKey = new SigningKey(auditMetadata, "Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator);
+        SigningKey signingKey = new SigningKey(auditMetadata, "Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign);
         
         
         signingKeyList.add(signingKey);
@@ -244,7 +246,7 @@ public class OperatorTest {
         
         DocumentContext doc = JsonPath.parse(operatorString);
         
-        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.id"));
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.guid"));
         
         assertEquals("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA", doc.read("$.jti"));
         
@@ -271,6 +273,7 @@ public class OperatorTest {
         assertEquals(true,doc.read("$.nats.signing_key_list[0].is_default"));
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",doc.read("$.nats.signing_key_list[0].key"));
         assertEquals("operator",doc.read("$.nats.signing_key_list[0].entity_type"));
+        assertEquals("sign",doc.read("$.nats.signing_key_list[0].key_type"));
         
         // Signing key audit meta data
         assertEquals(Integer.valueOf(2452675), doc.read("$.nats.signing_key_list[0].audit_meta_data.create_user_id"));

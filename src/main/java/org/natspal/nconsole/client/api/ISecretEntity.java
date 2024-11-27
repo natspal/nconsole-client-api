@@ -24,14 +24,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public interface ISecretEntity<T> extends Serializable {
 	
 	/**
-     * @return the id
+     * @return the guid
      */
-    public String getId();
+    public String getGuid();
 
     /**
-     * @param id the id to set
+     * @param guid the guid to set
      */
-    public void setId(String id);
+    public void setGuid(String guid);
     
     /**
     * @return the jwtId

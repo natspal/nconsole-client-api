@@ -52,7 +52,7 @@ public class AccountTest {
     		+ "			\"create_date\": 1726642150,\n"
     		+ "			\"update_date\": 1764562150 \n"
     		+ "		},\n"
-    		+ "  \"id\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
+    		+ "  \"guid\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + " \"iat\": 1660937715,\n"
             + " \"exp\": 1726642150,\n"
             + " \"iss\": \"OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK\",\n"
@@ -120,7 +120,7 @@ public class AccountTest {
         
         
         // assert 
-        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", account.getId());
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", account.getGuid());
         assertEquals("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA", account.getJwtId());
         assertEquals(1660937715, account.getIssueAt());
         
@@ -233,7 +233,7 @@ public class AccountTest {
         
         IAccount account = new Account();
         
-        account.setId("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
+        account.setGuid("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
         
         account.setJwtId("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA");
         
@@ -339,7 +339,7 @@ public class AccountTest {
         
         
         
-        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.id"));
+        assertEquals("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght", doc.read("$.guid"));
         
         assertEquals("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA", doc.read("$.jti"));
         

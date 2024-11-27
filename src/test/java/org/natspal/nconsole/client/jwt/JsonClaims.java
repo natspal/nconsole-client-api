@@ -19,7 +19,7 @@ package org.natspal.nconsole.client.jwt;
 
 public interface JsonClaims extends JwtClaims {
     
-	String ID = "id";
+	String GUID = "guid";
     
 	String AUDIT_META_DATA = "audit_meta_data";
 	
@@ -43,6 +43,7 @@ public interface JsonClaims extends JwtClaims {
 		String IS_DEFAULT = "is_default";
 		String KEY = "key";
 		String ENTITY_TYPE = "entity_type";
+		String KEY_TYPE = "key_type";
 		
 	}
 	

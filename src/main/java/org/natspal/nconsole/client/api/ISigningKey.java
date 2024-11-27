@@ -72,16 +72,16 @@ public interface ISigningKey {
 	public void setExpireAt(long expireAt);
 
 	/**
-	 * @return the id
+	 * @return the guid
 	 */
-	@JsonProperty("id")
-	public String getId();
+	@JsonProperty("guid")
+	public String getGuid();
 
 	/**
-	 * @param id the id to set
+	 * @param guid the guid to set
 	 */
-	@JsonProperty("id")
-	public void setId(String id);
+	@JsonProperty("guid")
+	public void setGuid(String guid);
 
 	/**
 	 * @return the isDefault
@@ -119,5 +119,18 @@ public interface ISigningKey {
 	 */
 	@JsonProperty("entity_type")
 	public void setEntityType(EntityType entityType);
+	
+	
+	/**
+	 * @return the keyType
+	 */
+	@JsonProperty("key_type")
+	public KeyType getKeyType();
+
+	/**
+	 * @param keyType the keyType to set
+	 */
+	@JsonProperty("key_type")
+	public void setKeyType(KeyType keyType);
 
 }
