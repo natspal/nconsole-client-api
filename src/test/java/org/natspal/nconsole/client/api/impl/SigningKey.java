@@ -14,7 +14,6 @@
 package org.natspal.nconsole.client.api.impl;
 
 import org.natspal.nconsole.client.api.EntityType;
-import org.natspal.nconsole.client.api.IAuditMetadata;
 import org.natspal.nconsole.client.api.ISigningKey;
 import org.natspal.nconsole.client.api.KeyType;
 
@@ -24,21 +23,21 @@ import org.natspal.nconsole.client.api.KeyType;
  *
  */
 
-public class SigningKey implements ISigningKey {
-	
-	private IAuditMetadata auditMetadata;
+public class SigningKey extends AuditMetadata implements ISigningKey {
 	
 	private String description;
 	
-	private long issueAt;
+	private Long issueAt;
 
-	private long expireAt;
+	private Long expiry;
 	
 	private String guid;
 	
 	private boolean isDefault;
 	
 	private String key;
+	
+	private String secret;
 	
 	private String referenceGuid;
 	
@@ -54,29 +53,18 @@ public class SigningKey implements ISigningKey {
 		
 	}
 	
-	public SigningKey(IAuditMetadata auditMetadata, String description, long issueAt, long expireAt, String guid,
+	public SigningKey(String description, Long issueAt, Long expiry, String guid,
 			boolean isDefault, String key, EntityType entityType, KeyType keyType,String referenceGuid) {
 		super();
-		this.auditMetadata = auditMetadata;
 		this.description = description;
 		this.issueAt = issueAt;
-		this.expireAt = expireAt;
+		this.expiry = expiry;
 		this.guid = guid;
 		this.isDefault = isDefault;
 		this.key = key;
 		this.entityType = entityType;
 		this.keyType = keyType;
 		this.referenceGuid = referenceGuid;
-	}
-
-	@Override
-	public IAuditMetadata getAuditMetadata() {
-		return auditMetadata;
-	}
-
-	@Override
-	public void setAuditMetadata(IAuditMetadata auditMetadata) {
-		this.auditMetadata = auditMetadata;
 	}
 
 	@Override
@@ -90,23 +78,23 @@ public class SigningKey implements ISigningKey {
 	}
 
 	@Override
-	public long getIssueAt() {
+	public Long getIssueAt() {
 		return issueAt;
 	}
 
 	@Override
-	public void setIssueAt(long issueAt) {
+	public void setIssueAt(Long issueAt) {
 		this.issueAt = issueAt;
 	}
 
 	@Override
-	public long getExpireAt() {
-		return expireAt;
+	public Long getExpiry() {
+		return expiry;
 	}
 
 	@Override
-	public void setExpireAt(long expireAt) {
-		this.expireAt = expireAt;
+	public void setExpiry(Long expiry) {
+		this.expiry = expiry;
 	}
 
 	@Override
@@ -137,6 +125,16 @@ public class SigningKey implements ISigningKey {
 	@Override
 	public void setKey(String key) {
 		this.key = key;
+	}
+	
+	@Override
+	public String getSecret() {
+		return secret;
+	}
+
+	@Override
+	public void setSecret(String secret) {
+		this.secret = secret;
 	}
 
 	@Override

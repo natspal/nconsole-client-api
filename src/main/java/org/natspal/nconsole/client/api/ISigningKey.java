@@ -13,6 +13,7 @@
 
 package org.natspal.nconsole.client.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -21,20 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  */
 
-public interface ISigningKey {
+public interface ISigningKey extends IAuditMetadata {
 	
-	/**
-	 * @return the auditMetadata
-	 */
-	@JsonProperty("audit_meta_data")
-	public IAuditMetadata getAuditMetadata();
-
-	/**
-	 * @param auditMetadata the auditMetadata to set
-	 */
-	@JsonProperty("audit_meta_data")
-	public void setAuditMetadata(IAuditMetadata auditMetadata);
-
 	/**
 	 * @return the description
 	 */
@@ -51,25 +40,25 @@ public interface ISigningKey {
 	 * @return the issueAt
 	 */
 	@JsonProperty("iat")
-	public long getIssueAt();
+	public Long getIssueAt();
 
 	/**
 	 * @param issueAt the issueAt to set
 	 */
 	@JsonProperty("iat")
-	public void setIssueAt(long issueAt);
+	public void setIssueAt(Long issueAt);
 	
 	/**
-	 * @return the expireAt
+	 * @return the expiry
 	 */
 	@JsonProperty("exp")
-	public long getExpireAt();
+	public Long getExpiry();
 
 	/**
-	 * @param expireAt the expireAt to set
+	 * @param expiry the expiry to set
 	 */
 	@JsonProperty("exp")
-	public void setExpireAt(long expireAt);
+	public void setExpiry(Long expiry);
 
 	/**
 	 * @return the guid
@@ -106,6 +95,19 @@ public interface ISigningKey {
 	 */
 	@JsonProperty("key")
 	public void setKey(String key);
+	
+	/**
+	 * @return the secret
+	 */
+	@JsonProperty("secret")
+	@JsonIgnore
+	public String getSecret();
+
+	/**
+	 * @param secret the secret to set
+	 */
+	@JsonProperty("secret")
+	public void setSecret(String secret);
 
 
 	/**

@@ -21,7 +21,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
-import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
 import org.natspal.nconsole.client.api.impl.SubscribePermission;
 import org.natspal.nconsole.client.api.impl.User;
@@ -39,12 +38,10 @@ public class UserTest {
     ObjectMapper mapper = Mapper.getObjectMapper();
     
     String userJwt = "{\n"
-    		+ "		\"audit_meta_data\" : {\n"
-    		+ "			\"create_user_id\": 1234,\n"
-    		+ "			\"update_user_id\": 4567,\n"
-    		+ "			\"create_date\": 1726642150,\n"
-    		+ "			\"update_date\": 1764562150 \n"
-    		+ "		},\n"
+    		+ "	\"create_user_id\": 1234,\n"
+    		+ "	\"update_user_id\": 4567,\n"
+    		+ "	\"create_date\": 1726642150,\n"
+    		+ "	\"update_date\": 1764562150, \n"
     		+ "  \"guid\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + "  \"jti\": \"AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A\",\n"
             + "  \"iat\": 1651011888,\n"
@@ -90,14 +87,11 @@ public class UserTest {
         
         assertEquals("UCS7KJIXYPAQUNXFM5BQUR2CBBNV2AWEH4YTJAA2DYFCE7LXQUXA2KB7", user.getSubject());
         
-        IAuditMetadata auditMetaData = (IAuditMetadata)user.getAuditMetadata();
         
-        assertNotNull(auditMetaData);
-        
-        assertEquals(1234,auditMetaData.getCreateUserId());
-        assertEquals(4567,auditMetaData.getUpdateUserId());
-        assertEquals(1726642150,auditMetaData.getCreateDate());
-        assertEquals(1764562150,auditMetaData.getUpdateDate());
+        assertEquals(1234,user.getCreateUserId());
+        assertEquals(4567,user.getUpdateUserId());
+        assertEquals(1726642150,user.getCreateDate());
+        assertEquals(1764562150,user.getUpdateDate());
         
         // assert nats config
         
@@ -154,14 +148,11 @@ public class UserTest {
         
         user.setSubject("UCS7KJIXYPAQUNXFM5BQUR2CBBNV2AWEH4YTJAA2DYFCE7LXQUXA2KB7");
         
-        IAuditMetadata audit_meta_data = new AuditMetadata();
         
-        audit_meta_data.setCreateUserId(347347352);
-        audit_meta_data.setUpdateUserId(345638567);
-        audit_meta_data.setCreateDate(77868667);
-        audit_meta_data.setUpdateDate(6767676);
-        
-        user.setAuditMetadata(audit_meta_data);
+        user.setCreateUserId(347347352);
+        user.setUpdateUserId(345638567);
+        user.setCreateDate(77868667);
+        user.setUpdateDate(6767676);
         
         IUserConfig userConfig = new UserConfig();
         
@@ -224,10 +215,10 @@ public class UserTest {
         
         assertEquals(Integer.valueOf(2),doc.read("$.nats.version"));
         
-        assertEquals(Integer.valueOf(347347352),doc.read("$.audit_meta_data.create_user_id"));
-        assertEquals(Integer.valueOf(345638567),doc.read("$.audit_meta_data.update_user_id"));
-        assertEquals(Integer.valueOf(77868667),doc.read("$.audit_meta_data.create_date"));
-        assertEquals(Integer.valueOf(6767676),doc.read("$.audit_meta_data.update_date"));
+        assertEquals(Integer.valueOf(347347352),doc.read("$.create_user_id"));
+        assertEquals(Integer.valueOf(345638567),doc.read("$.update_user_id"));
+        assertEquals(Integer.valueOf(77868667),doc.read("$.create_date"));
+        assertEquals(Integer.valueOf(6767676),doc.read("$.update_date"));
         
     }
 }

@@ -103,14 +103,15 @@ class UserDeserializer extends SecretEntityDeserializer<User> {
         
         String jwtId = getString(tree, JwtClaims.JWT_ID);
         
-        AuditMetadata auditMetadata = getObject(tree, JsonClaims.AUDIT_META_DATA,AuditMetadata.class);
-        
         
         User user = new User(null,jwtId, issuedAt,expiry, issuer, name, subject, userConfig);
         
         user.setGuid(id);
+        user.setCreateDate(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_DATE));
+        user.setUpdateDate(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_DATE));
+        user.setUpdateUserId(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_USER_ID));
+        user.setCreateUserId(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_USER_ID));
         
-        user.setAuditMetadata(auditMetadata);
 
         return user;
     }

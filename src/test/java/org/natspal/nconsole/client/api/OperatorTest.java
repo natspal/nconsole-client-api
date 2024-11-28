@@ -18,6 +18,7 @@ package org.natspal.nconsole.client.api;
  */
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,6 +37,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.PathNotFoundException;
 
 public class OperatorTest {
     
@@ -43,12 +45,10 @@ public class OperatorTest {
     ObjectMapper mapper = Mapper.getObjectMapper();
     
     String operatorJwt = "{\n"
-    		+ "		\"audit_meta_data\" : {\n"
-    		+ "			\"create_user_id\": 1234,\n"
-    		+ "			\"update_user_id\": 4567,\n"
-    		+ "			\"create_date\": 1726642150,\n"
-    		+ "			\"update_date\": 1764562150 \n"
-    		+ "		},\n"
+    		+ "	 \"create_user_id\": 1234,\n"
+    		+ "	 \"update_user_id\": 4567,\n"
+    		+ "	 \"create_date\": 1726642150,\n"
+    		+ "	 \"update_date\": 1764562150, \n"
     		+ "  \"guid\": \"gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght\",\n"
             + "  \"jti\": \"S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA\",\n"
             + "  \"iat\": 1634840614,\n"
@@ -65,12 +65,10 @@ public class OperatorTest {
             + "        \"OCHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM\" \n"
             + "    ], \n"
             + "	   \"signing_key_list\" :[{\n"
-            + "  		\"audit_meta_data\": {\n"
-            + "    		\"create_user_id\": 2452675,\n"
-            + "    		\"create_date\": 1698203628000,\n"
-            + "    		\"update_user_id\": 5683636,\n"
-            + "    		\"update_date\": 1698303628000\n"
-            + "  	},\n"
+            + "    \"create_user_id\": 2452675,\n"
+            + "    	\"create_date\": 1698203628000,\n"
+            + "    	\"update_user_id\": 5683636,\n"
+            + "    	\"update_date\": 1698303628000,\n"
             + "  	\"description\": \"Primary signing key for production environment\",\n"
             + "  	\"iat\": 1698203628000,\n"
             + "  	\"exp\": 1713763628000,\n"
@@ -137,7 +135,7 @@ public class OperatorTest {
         
         assertEquals("Primary signing key for production environment",signingKey.getDescription());
         assertEquals(1698203628000l,signingKey.getIssueAt());
-        assertEquals(1713763628000l,signingKey.getExpireAt());
+        assertEquals(1713763628000l,signingKey.getExpiry());
         assertEquals("key-1234567890abcdef",signingKey.getGuid());
         assertEquals(true,signingKey.isDefault());
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",signingKey.getKey());
@@ -157,14 +155,10 @@ public class OperatorTest {
         
         assertEquals(2,operatorConfig.getVersion());
         
-        IAuditMetadata auditMetaData = (IAuditMetadata)operator.getAuditMetadata();
-        
-        assertNotNull(auditMetaData);
-        
-        assertEquals(1234,auditMetaData.getCreateUserId());
-        assertEquals(4567,auditMetaData.getUpdateUserId());
-        assertEquals(1726642150,auditMetaData.getCreateDate());
-        assertEquals(1764562150,auditMetaData.getUpdateDate());
+        assertEquals(1234,operator.getCreateUserId());
+        assertEquals(4567,operator.getUpdateUserId());
+        assertEquals(1726642150,operator.getCreateDate());
+        assertEquals(1764562150,operator.getUpdateDate());
         
         
     }
@@ -194,14 +188,14 @@ public class OperatorTest {
         operator.setSubject("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK");
         
         
-        IAuditMetadata audit_meta_data = new AuditMetadata();
+        //IAuditMetadata audit_meta_data = new AuditMetadata();
         
-        audit_meta_data.setCreateUserId(347347352);
-        audit_meta_data.setUpdateUserId(345638567);
-        audit_meta_data.setCreateDate(77868667);
-        audit_meta_data.setUpdateDate(6767676);
+        operator.setCreateUserId(347347352);
+        operator.setUpdateUserId(345638567);
+        operator.setCreateDate(77868667);
+        operator.setUpdateDate(6767676);
         
-        operator.setAuditMetadata(audit_meta_data);
+        //operator.setAuditMetadata(audit_meta_data);
         
         IOperatorConfig operatorConfig = new OperatorConfig();
         
@@ -215,15 +209,14 @@ public class OperatorTest {
         
         List<SigningKey> signingKeyList = new ArrayList<SigningKey>();
         
-        AuditMetadata auditMetadata = new AuditMetadata();
+        SigningKey signingKey = new SigningKey("Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign,"dfgh-dfjgj-dfjhgjg-dfjhgfjhf");
         
-        auditMetadata.setCreateDate(1698203628000l);
-        auditMetadata.setUpdateDate(1654203628000l);
-        auditMetadata.setCreateUserId(2452675);
-        auditMetadata.setUpdateUserId(5683636);
+        signingKey.setCreateDate(1698203628000l);
+        signingKey.setUpdateDate(1654203628000l);
+        signingKey.setCreateUserId(2452675);
+        signingKey.setUpdateUserId(5683636);
         
-        SigningKey signingKey = new SigningKey(auditMetadata, "Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign,"dfgh-dfjgj-dfjhgjg-dfjhgfjhf");
-        
+        signingKey.setSecret("Should not be serialized");
         
         signingKeyList.add(signingKey);
         
@@ -276,14 +269,19 @@ public class OperatorTest {
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",doc.read("$.nats.signing_key_list[0].key"));
         assertEquals("operator",doc.read("$.nats.signing_key_list[0].entity_type"));
         assertEquals("sign",doc.read("$.nats.signing_key_list[0].key_type"));
+        try {
+        	assertNull(doc.read("$.nats.signing_key_list[0].secret"));
+        }catch (PathNotFoundException e) {
+			assertEquals("No results for path: $['nats']['signing_key_list'][0]['secret']",e.getMessage());
+		}
         assertEquals("dfgh-dfjgj-dfjhgjg-dfjhgfjhf",doc.read("$.nats.signing_key_list[0].reference_guid"));
         
         
         // Signing key audit meta data
-        assertEquals(Integer.valueOf(2452675), doc.read("$.nats.signing_key_list[0].audit_meta_data.create_user_id"));
-        assertEquals(Long.valueOf(1698203628000l), doc.read("$.nats.signing_key_list[0].audit_meta_data.create_date"));
-        assertEquals(Integer.valueOf(5683636), doc.read("$.nats.signing_key_list[0].audit_meta_data.update_user_id"));
-        assertEquals(Long.valueOf(1654203628000l), doc.read("$.nats.signing_key_list[0].audit_meta_data.update_date"));
+        assertEquals(Integer.valueOf(2452675), doc.read("$.nats.signing_key_list[0].create_user_id"));
+        assertEquals(Long.valueOf(1698203628000l), doc.read("$.nats.signing_key_list[0].create_date"));
+        assertEquals(Integer.valueOf(5683636), doc.read("$.nats.signing_key_list[0].update_user_id"));
+        assertEquals(Long.valueOf(1654203628000l), doc.read("$.nats.signing_key_list[0].update_date"));
         
         
         assertEquals("ACK5GDGC5RYTIVBHEELIPQYY6GABNSMB2BCFSMWHXV3IEFB2VSQ2ADE7",doc.read("$.nats.system_account"));
@@ -294,10 +292,10 @@ public class OperatorTest {
         
         assertEquals(Integer.valueOf(2),doc.read("$.nats.version"));
         
-        assertEquals(Integer.valueOf(347347352),doc.read("$.audit_meta_data.create_user_id"));
-        assertEquals(Integer.valueOf(345638567),doc.read("$.audit_meta_data.update_user_id"));
-        assertEquals(Integer.valueOf(77868667),doc.read("$.audit_meta_data.create_date"));
-        assertEquals(Integer.valueOf(6767676),doc.read("$.audit_meta_data.update_date"));
+        assertEquals(Integer.valueOf(347347352),doc.read("$.create_user_id"));
+        assertEquals(Integer.valueOf(345638567),doc.read("$.update_user_id"));
+        assertEquals(Integer.valueOf(77868667),doc.read("$.create_date"));
+        assertEquals(Integer.valueOf(6767676),doc.read("$.update_date"));
         
         
     }

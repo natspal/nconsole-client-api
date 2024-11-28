@@ -72,8 +72,6 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         	
         	for(Map map: signingKeyListMap) {
         		
-        		AuditMetadata auditMetadata = getObject(map, JsonClaims.AUDIT_META_DATA,AuditMetadata.class);
-        		
         		String  description = getString(map, JsonClaims.SIGNING_KEY.DESCRIPTION);
         		Long    issueAt 	= getLong(map, JsonClaims.SIGNING_KEY.ISSUE_AT);
         		Long    expireAt    = getLong(map, JsonClaims.SIGNING_KEY.EXPIRE_AT);
@@ -84,7 +82,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         		String keyType      = getString(map, JsonClaims.SIGNING_KEY.KEY_TYPE);
         		String referenceGuid   = getString(map, JsonClaims.SIGNING_KEY.REFERENCE_GUID);
         		
-        		SigningKey signingKey = new SigningKey(auditMetadata, description, issueAt, expireAt, sid, isDefault, key, EntityType.valueOf(entityType),KeyType.valueOf(keyType),referenceGuid);
+        		SigningKey signingKey = new SigningKey(description, issueAt, expireAt, sid, isDefault, key, EntityType.valueOf(entityType),KeyType.valueOf(keyType),referenceGuid);
         		
         		signingKeyList.add(signingKey); 
         	}
@@ -119,15 +117,14 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         String jwtId = getString(tree, JwtClaims.JWT_ID);
         
         
-        
-        AuditMetadata auditMetadata = getObject(tree, JsonClaims.AUDIT_META_DATA,AuditMetadata.class);
-        
-        
         Operator operator = new Operator(true,jwtId, issuedAt,expiry,issuer, name, subject, operatorConfig);
         
         operator.setGuid(id);
         
-        operator.setAuditMetadata(auditMetadata);
+        operator.setCreateDate(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_DATE));
+        operator.setUpdateDate(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_DATE));
+        operator.setUpdateUserId(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_USER_ID));
+        operator.setCreateUserId(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_USER_ID));
         
         
         return operator;
