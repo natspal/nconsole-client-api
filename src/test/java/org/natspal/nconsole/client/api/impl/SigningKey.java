@@ -40,6 +40,8 @@ public class SigningKey implements ISigningKey {
 	
 	private String key;
 	
+	private String referenceGuid;
+	
 	private EntityType entityType;
 	
 	private KeyType keyType;
@@ -53,7 +55,7 @@ public class SigningKey implements ISigningKey {
 	}
 	
 	public SigningKey(IAuditMetadata auditMetadata, String description, long issueAt, long expireAt, String guid,
-			boolean isDefault, String key, EntityType entityType, KeyType keyType) {
+			boolean isDefault, String key, EntityType entityType, KeyType keyType,String referenceGuid) {
 		super();
 		this.auditMetadata = auditMetadata;
 		this.description = description;
@@ -64,6 +66,7 @@ public class SigningKey implements ISigningKey {
 		this.key = key;
 		this.entityType = entityType;
 		this.keyType = keyType;
+		this.referenceGuid = referenceGuid;
 	}
 
 	@Override
@@ -154,6 +157,16 @@ public class SigningKey implements ISigningKey {
 	@Override
 	public void setKeyType(KeyType keyType) {
 		this.keyType = keyType;
+	}
+
+	@Override
+	public String getReferenceGuid() {
+		return referenceGuid;
+	}
+
+	@Override
+	public void setReferenceGuid(String referenceGuid) {
+		this.referenceGuid = referenceGuid;
 	}
 
 }

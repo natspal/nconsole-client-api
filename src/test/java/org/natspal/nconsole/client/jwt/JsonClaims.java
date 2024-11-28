@@ -44,6 +44,7 @@ public interface JsonClaims extends JwtClaims {
 		String KEY = "key";
 		String ENTITY_TYPE = "entity_type";
 		String KEY_TYPE = "key_type";
+		String REFERENCE_GUID = "reference_guid";
 		
 	}
 	

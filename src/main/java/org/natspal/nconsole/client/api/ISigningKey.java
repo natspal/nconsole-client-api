@@ -132,5 +132,17 @@ public interface ISigningKey {
 	 */
 	@JsonProperty("key_type")
 	public void setKeyType(KeyType keyType);
+	
+	/**
+	 * @return the referenceGuid
+	 */
+	@JsonProperty("reference_guid")
+	public String getReferenceGuid();
+
+	/**
+	 * @param referenceGuid the referenceGuid to set
+	 */
+	@JsonProperty("reference_guid")
+	public void setReferenceGuid(String referenceGuid);
 
 }

@@ -78,7 +78,8 @@ public class OperatorTest {
             + "  	\"is_default\": true,\n"
             + "  	\"key\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ\",\n"
             + "  	\"entity_type\": \"operator\",\n"
-            + "  	\"key_type\": \"sign\"\n"
+            + "  	\"key_type\": \"sign\",\n"
+            + "  	\"reference_guid\": \"tryry-hghgg-767hgfhf-hggjgh\"\n"
             + "		}],"
             + "     \"strict_signing_key_usage\": true, \n"
             + "    \"system_account\": \"ACK5GDGC5RYTIVBHEELIPQYY6GABNSMB2BCFSMWHXV3IEFB2VSQ2ADE7\",\n"
@@ -142,6 +143,7 @@ public class OperatorTest {
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",signingKey.getKey());
         assertEquals(EntityType.operator,signingKey.getEntityType());
         assertEquals(KeyType.sign,signingKey.getKeyType());
+        assertEquals("tryry-hghgg-767hgfhf-hggjgh",signingKey.getReferenceGuid());
         
         
         
@@ -220,7 +222,7 @@ public class OperatorTest {
         auditMetadata.setCreateUserId(2452675);
         auditMetadata.setUpdateUserId(5683636);
         
-        SigningKey signingKey = new SigningKey(auditMetadata, "Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign);
+        SigningKey signingKey = new SigningKey(auditMetadata, "Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign,"dfgh-dfjgj-dfjhgjg-dfjhgfjhf");
         
         
         signingKeyList.add(signingKey);
@@ -274,6 +276,8 @@ public class OperatorTest {
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",doc.read("$.nats.signing_key_list[0].key"));
         assertEquals("operator",doc.read("$.nats.signing_key_list[0].entity_type"));
         assertEquals("sign",doc.read("$.nats.signing_key_list[0].key_type"));
+        assertEquals("dfgh-dfjgj-dfjhgjg-dfjhgfjhf",doc.read("$.nats.signing_key_list[0].reference_guid"));
+        
         
         // Signing key audit meta data
         assertEquals(Integer.valueOf(2452675), doc.read("$.nats.signing_key_list[0].audit_meta_data.create_user_id"));
