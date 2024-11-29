@@ -17,6 +17,7 @@ import org.natspal.nconsole.client.api.IAccount;
 import org.natspal.nconsole.client.api.IAccountConfig;
 import org.natspal.nconsole.client.api.IOperator;
 import org.natspal.nconsole.client.api.IOperatorConfig;
+import org.natspal.nconsole.client.api.ISigningKey;
 import org.natspal.nconsole.client.api.IUser;
 import org.natspal.nconsole.client.api.IUserConfig;
 import org.natspal.nconsole.client.api.KeyType;
@@ -125,6 +126,23 @@ public interface IPersistentContext {
     
     
     
+    /**********************************************/
+    /** Signing Key methods                       */
+    /**********************************************/
+	
+	ISigningKey createSigningKey(ISigningKey signingKey) throws DataAccessException;
+	
+	ISigningKey updateSigningKey(ISigningKey signingKey) throws DataAccessException;
+	
+	ISigningKey findSigningKeyByGuid(String guid) throws DataAccessException;
+	
+	ISigningKey findOperatorSigningKeyByKey(String key) throws DataAccessException;
+	
+	List<ISigningKey> findOperatorSigningKeyByReferenceGuid(String refGuid) throws DataAccessException;
+    
+	/**********************************************/
+    /** End Signing Key methods                       */
+    /**********************************************/
     
 
 }
