@@ -22,11 +22,10 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Test;
-import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.Operator;
 import org.natspal.nconsole.client.api.impl.OperatorConfig;
 import org.natspal.nconsole.client.api.impl.SigningKey;
@@ -124,11 +123,11 @@ public class OperatorTest {
         
         assertEquals(1,operatorConfig.getSigningKeys().length);
         
-        List<? extends ISigningKey> signingKeyList = operatorConfig.getSigningKeyList();
+        Set<? extends ISigningKey> signingKeyList = operatorConfig.getSigningKeyList();
         
         assertEquals(1,signingKeyList.size());
         
-        ISigningKey signingKey = signingKeyList.get(0);
+        ISigningKey signingKey = signingKeyList.iterator().next();
         
         assertNotNull(signingKey);
         
@@ -207,7 +206,7 @@ public class OperatorTest {
         
         String[] signingKeys =  new String[] {"OCHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM"};
         
-        List<SigningKey> signingKeyList = new ArrayList<SigningKey>();
+        Set<SigningKey> signingKeyList = new HashSet<SigningKey>();
         
         SigningKey signingKey = new SigningKey("Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign,"dfgh-dfjgj-dfjhgjg-dfjhgfjhf");
         

@@ -13,6 +13,8 @@
 
 package org.natspal.nconsole.client.api.impl;
 
+import java.util.Objects;
+
 import org.natspal.nconsole.client.api.EntityType;
 import org.natspal.nconsole.client.api.ISigningKey;
 import org.natspal.nconsole.client.api.KeyType;
@@ -25,6 +27,7 @@ import org.natspal.nconsole.client.api.KeyType;
 
 public class SigningKey extends AuditMetadata implements ISigningKey {
 	
+
 	private String description;
 	
 	private Long issueAt;
@@ -165,6 +168,23 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 	@Override
 	public void setReferenceGuid(String referenceGuid) {
 		this.referenceGuid = referenceGuid;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(guid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SigningKey other = (SigningKey) obj;
+		return Objects.equals(guid, other.guid);
 	}
 
 }

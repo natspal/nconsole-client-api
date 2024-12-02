@@ -12,7 +12,7 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.natspal.nconsole.client.api.EntityType;
 import org.natspal.nconsole.client.api.IOperatorConfig;
@@ -34,7 +34,7 @@ public class OperatorConfig implements IOperatorConfig {
     
     private String[] signingKeys;
     
-    private List<? extends ISigningKey> signingKeyList;
+    private Set<? extends ISigningKey> signingKeyList;
     
     private boolean strictSigningKeyUsage;
     
@@ -54,7 +54,7 @@ public class OperatorConfig implements IOperatorConfig {
     
     
     public OperatorConfig(String accountServerUrl, String[] operatorServiceUrls, String[] signingKeys,
-			List<? extends ISigningKey> signingKeyList, boolean strictSigningKeyUsage, String systemAccount,
+			Set<? extends ISigningKey> signingKeyList, boolean strictSigningKeyUsage, String systemAccount,
 			EntityType type, int version) {
 		super();
 		this.accountServerUrl = accountServerUrl;
@@ -166,12 +166,12 @@ public class OperatorConfig implements IOperatorConfig {
     }
 
 	@Override
-	public List<? extends ISigningKey> getSigningKeyList() {
+	public Set<? extends ISigningKey> getSigningKeyList() {
 		return signingKeyList;
 	}
 
 	@Override
-	public void setSigningKeyList(List<? extends ISigningKey> signingKeyList) {
+	public void setSigningKeyList(Set<? extends ISigningKey> signingKeyList) {
 		this.signingKeyList = signingKeyList;
 	}
     

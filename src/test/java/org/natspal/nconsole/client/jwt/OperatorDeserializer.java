@@ -62,7 +62,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         
         Map<String, JsonNode> natsConfig = getMap(tree, JwtClaims.NATS);
         
-        List<SigningKey> signingKeyList = new ArrayList<SigningKey>();
+        Set<SigningKey> signingKeyList = new HashSet<SigningKey>();
         
         
         List<Map<String, JsonNode>> signingKeyListMap = getListMap(natsConfig, JsonClaims.SIGNING_KEY_LIST);
