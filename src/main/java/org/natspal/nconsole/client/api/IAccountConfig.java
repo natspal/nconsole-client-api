@@ -15,6 +15,7 @@ package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -86,6 +87,19 @@ public interface IAccountConfig extends Serializable{
     @JsonProperty("signing_keys")
     public void setSigningKeys(String[] signingKeys);
 
+    /**
+     * @return the signingKeyList
+     */
+    @JsonProperty("signing_key_list")
+    public Set<? extends ISigningKey> getSigningKeyList();
+
+    /**
+     * @param signingKeyList the signingKeyList to set
+     */
+    @JsonProperty("signing_key_list")
+    //@JsonIgnore
+    public void setSigningKeyList(Set<? extends ISigningKey> signingKeyList);
+    
     /**
      * @return the type
      */

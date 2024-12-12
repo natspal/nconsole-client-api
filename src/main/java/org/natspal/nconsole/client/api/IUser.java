@@ -12,8 +12,8 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 /***
  * 
  * @author Amit K Gupta
@@ -22,19 +22,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public interface IUser<T> extends ISecretEntity<T> {
 
     
-    /**
-     * @return the accountId
-     */
-    @JsonProperty("account_idkey")
-    @JsonIgnore
-    public String getAccountIdKey();
+	/**
+	 * @return the operatorGuid
+	 */
+	@JsonProperty("operator_guid")
+	public String getOperatorGuid();
 
-    /**
-     * @param accountIdKey the accountId to set
-     */
-    @JsonProperty("account_idkey")
-    public void setAccountIdKey(String accountIdKey);
-    
+	/**
+	 * @param operatorGuid the operatorGuid to set
+	 */
+	@JsonProperty("operator_guid")
+	public void setOperatorGuid(String operatorGuid);
+
+	/**
+	 * @return the accountGuid
+	 */
+	@JsonProperty("account_guid")
+	public String getAccountGuid();
+
+	/**
+	 * @param accountGuid the accountGuid to set
+	 */
+	@JsonProperty("account_guid")
+	public void setAccountGuid(String accountGuid);
+
+	/**
+	 * @return the accountSigningKeyGuid
+	 */
+	@JsonProperty("account_signing_key_guid")
+	public String getAccountSigningKeyGuid();
+
+	/**
+	 * @param accountSigningKeyGuid the accountSigningKeyGuid to set
+	 */
+	@JsonProperty("account_signing_key_guid")
+	public void setAccountSigningKeyGuid(String accountSigningKeyGuid);
     
     
 }

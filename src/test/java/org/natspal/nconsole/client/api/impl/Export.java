@@ -24,7 +24,11 @@ import org.natspal.nconsole.client.api.ResponseType;
 
 public class Export implements IExport {
 
+	private static final long serialVersionUID = 5444951423252639539L;
+
 	private String name;
+	
+	private String guid;
 	
 	private String subject;
 	
@@ -70,6 +74,16 @@ public class Export implements IExport {
 	@Override
 	public void setResponseType(ResponseType responseType) {
 		this.responseType = responseType;
+	}
+
+	@Override
+	public String getGuid() {
+		return guid;
+	}
+
+	@Override
+	public void setGuid(String guid) {
+		this.guid = guid;
 	}
 
 }

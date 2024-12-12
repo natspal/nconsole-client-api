@@ -13,6 +13,7 @@
 package org.natspal.nconsole.client.api.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.natspal.nconsole.client.api.EntityType;
 import org.natspal.nconsole.client.api.IAccountConfig;
@@ -20,6 +21,7 @@ import org.natspal.nconsole.client.api.IAccountDefaultPermission;
 import org.natspal.nconsole.client.api.IAccountLimits;
 import org.natspal.nconsole.client.api.IExport;
 import org.natspal.nconsole.client.api.IImport;
+import org.natspal.nconsole.client.api.ISigningKey;
 
 /***
  * 
@@ -30,6 +32,8 @@ import org.natspal.nconsole.client.api.IImport;
 public class AccountConfig implements IAccountConfig{
 
     
+	private static final long serialVersionUID = 2142674002069996585L;
+
 	private List<? extends IExport> exports;
 	
 	private List<? extends IImport> imports;
@@ -39,6 +43,8 @@ public class AccountConfig implements IAccountConfig{
     private IAccountLimits limits;
     
     private String[] signingKeys;
+    
+    private Set<? extends ISigningKey> signingKeyList;
     
     private EntityType type = EntityType.account;
     
@@ -161,6 +167,16 @@ public class AccountConfig implements IAccountConfig{
     public void setVersion(int version) {
         this.version = version;
     }
+    
+    @Override
+	public Set<? extends ISigningKey> getSigningKeyList() {
+		return signingKeyList;
+	}
+
+	@Override
+	public void setSigningKeyList(Set<? extends ISigningKey> signingKeyList) {
+		this.signingKeyList = signingKeyList;
+	}
 
     
 }

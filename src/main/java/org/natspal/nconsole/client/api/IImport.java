@@ -23,6 +23,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public interface IImport extends Serializable {
 
+	/**
+     * @return the guid
+     */
+    public String getGuid();
+
+    /**
+     * @param guid the guid to set
+     */
+    public void setGuid(String guid);
 
 	/**
 	 * @return the name

@@ -13,7 +13,6 @@
 
 package org.natspal.nconsole.client.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /***
@@ -28,7 +27,6 @@ public interface IAccount<T> extends ISecretEntity<T> {
      * @return the operatorIdKey
      */
     @JsonProperty("operator_idkey")
-    @JsonIgnore
     public String getOperatorIdKey();
 
     /**
@@ -38,5 +36,15 @@ public interface IAccount<T> extends ISecretEntity<T> {
     public void setOperatorIdKey(String operatorIdKey);
    
     
+    /**
+	 * @return the signedBy
+	 */
+    @JsonProperty("signed_by")
+	public String getSignedBy();
+	/**
+	 * @param signedBy the signedBy to set
+	 */
+    @JsonProperty("signed_by")
+	public void setSignedBy(String signedBy);
 
 }

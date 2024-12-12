@@ -25,6 +25,8 @@ public class Account extends AbstractSecretEntity<AccountConfig>  implements IAc
     
     private String operatorIdKey; 
     
+    private String signedBy; 
+    
     // --------------------------------------------
     // Constructors
     // --------------------------------------------
@@ -63,5 +65,20 @@ public class Account extends AbstractSecretEntity<AccountConfig>  implements IAc
         this.operatorIdKey = operatorId;
     }
     
+    /**
+	 * @return the signedBy
+	 */
+    @Override
+	public String getSignedBy() {
+		return signedBy;
+	}
+
+	/**
+	 * @param signedBy the signedBy to set
+	 */
+    @Override
+	public void setSignedBy(String signedBy) {
+		this.signedBy = signedBy;
+	}
 
 }

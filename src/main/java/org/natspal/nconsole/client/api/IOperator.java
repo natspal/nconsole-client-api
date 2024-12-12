@@ -35,4 +35,16 @@ public interface IOperator<T>  extends ISecretEntity<T> {
     public void setCreateSystemAccount(boolean createSystemAccount);
    
     
+    /**
+	 * @return the signedBy
+	 */
+    @JsonProperty("signed_by")
+	public String getSignedBy();
+
+	/**
+	 * @param signedBy the signedBy to set
+	 */
+    @JsonProperty("signed_by")
+	public void setSignedBy(String signedBy);
+    
 }

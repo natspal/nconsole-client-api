@@ -25,7 +25,7 @@ public abstract class AbstractSecretEntity<T> extends AuditMetadata implements I
 
     private static final long serialVersionUID = -366967744484889470L;
 
-    private String id;
+    private String guid;
     
     private String jwt;
     
@@ -65,17 +65,17 @@ public abstract class AbstractSecretEntity<T> extends AuditMetadata implements I
     }
     
 	/**
-     * @return the id
+     * @return the guid
      */
     public String getGuid() {
-        return id;
+        return guid;
     }
 
     /**
-     * @param jwt the jwt to set
+     * @param guid the guid to set
      */
-    public void setGuid(String id) {
-        this.id = id;
+    public void setGuid(String guid) {
+        this.guid = guid;
     }
     
     /**

@@ -26,6 +26,7 @@ public class Operator extends AbstractSecretEntity<OperatorConfig> implements IO
 
 	private boolean createSystemAccount; 
     
+	private String signedBy;
     // --------------------------------------------
     // Constructors
     // --------------------------------------------
@@ -66,4 +67,19 @@ public class Operator extends AbstractSecretEntity<OperatorConfig> implements IO
         this.createSystemAccount = createSystemAccount;
     }
     
+    /**
+	 * @return the signedBy
+	 */
+    @Override
+	public String getSignedBy() {
+		return signedBy;
+	}
+
+	/**
+	 * @param signedBy the signedBy to set
+	 */
+	@Override
+	public void setSignedBy(String signedBy) {
+		this.signedBy = signedBy;
+	}
 }

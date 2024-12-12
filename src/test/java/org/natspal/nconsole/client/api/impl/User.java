@@ -24,37 +24,61 @@ public class User extends AbstractSecretEntity<UserConfig> implements IUser<User
 
 	private static final long serialVersionUID = 9189391926212810696L;
 	
-	private String accountIdKey; 
+	private String operatorGuid;
+    
+	private String accountGuid;
+	
+	private String accountSigningKeyGuid;
 	
 	public User() {
 	}
 	
 	
 	
-    public User(String accountIdKey,String jwt, String jwtId, long issueAt, long expiry, String issuer, String name, String subject,
+    public User(String jwt, String jwtId, long issueAt, long expiry, String issuer, String name, String subject,
             UserConfig nats) {
         super(jwt, jwtId, issueAt, expiry, issuer, name, subject, nats);
-        this.accountIdKey = accountIdKey;
     }
     
-    public User(String accountIdKey,String jwtId, long issueAt, long expiry, String issuer, String name, String subject,
-            UserConfig nats) {
-        super(null, jwtId, issueAt, expiry, issuer, name, subject, nats);
-        this.accountIdKey = accountIdKey;
-    }
+	@Override
+	public String getOperatorGuid() {
+		return operatorGuid;
+	}
 
 
 
-    @Override
-    public String getAccountIdKey() {
-        return accountIdKey;
-    }
+	@Override
+	public void setOperatorGuid(String operatorGuid) {
+		this.operatorGuid = operatorGuid;
+	}
 
-    
-    @Override
-    public void setAccountIdKey(String accountIdKey) {
-        this.accountIdKey = accountIdKey;
-    }
+
+
+	@Override
+	public String getAccountGuid() {
+		return accountGuid;
+	}
+
+
+
+	@Override
+	public void setAccountGuid(String accountGuid) {
+		this.accountGuid = accountGuid;
+	}
+
+
+
+	@Override
+	public String getAccountSigningKeyGuid() {
+		return accountSigningKeyGuid;
+	}
+
+
+
+	@Override
+	public void setAccountSigningKeyGuid(String accountSigningKeyGuid) {
+		this.accountSigningKeyGuid = accountSigningKeyGuid;
+	}
     
     
 }

@@ -39,7 +39,7 @@ public interface IPersistentContext {
     
     IOperator<IOperatorConfig> updateOperator(IOperator<IOperatorConfig> name) throws DataAccessException;
     
-    IUser<IUserConfig> createUser(IUser<IUserConfig> name, String operatorIdKey);
+    IUser<IUserConfig> createUser(IUser<IUserConfig> name);
     
     void deleteAccountByNameAndOperatorIdKey(String name,String operatorIdKey) throws DataAccessException; 
     
@@ -49,9 +49,9 @@ public interface IPersistentContext {
     
     void deleteSeedBySigningKey(String idKey) throws DataAccessException;
     
-    void deleteUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey)  throws DataAccessException;
+    void deleteUserByGuidAndAccountGuidAndOperatorGuid(String userGuid,String accountGuid,String operatorGuid)  throws DataAccessException;
     
-    void deleteUserByNameAndAccountIdKeyAndOperatorIdKey(String userName,String accountIdKey,String operatorIdKey)  throws DataAccessException;
+    void deleteUserByNameAndAccountGuidAndOperatorGuid(String userName,String accountGuid,String operatorGuid)  throws DataAccessException;
     
     void deleteAccountByIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
     
@@ -96,13 +96,13 @@ public interface IPersistentContext {
     
     String[] findOperatorSigningKeysByName(String name) throws DataAccessException;
     
-    IUser<IUserConfig> findUserByNameAndAccountIdKeyAndOperatorIdKey(String userName,String accountIdKey,String operatorIdKey) throws DataAccessException;
+    IUser<IUserConfig> findUserByNameAndAccountGuidAndOperatorGuid(String userName,String accountGuid,String operatorGuid) throws DataAccessException;
     
-    IUser<IUserConfig> findUserByIdKeyAndAccountIdKeyAndOperatorIdKey(String userIdKey,String accountIdKey,String operatorIdKey) throws DataAccessException;
+    IUser<IUserConfig> findUserByGuidAndAccountGuidAndOperatorGuid(String userGuid,String accountGuid,String operatorGuid) throws DataAccessException;
     
-    String findUserJwtByIdKeyAndAccountIdKey(String userIdKey,String accountIdKey,String operatorIdKey) throws DataAccessException;
+    String findUserJwtByGuidAndAccountGuidAndOperatorGuid(String userGuid,String accountGuid,String operatorGuid) throws DataAccessException;
     
-    String findUserJwtByNameAndAccountIdKey(String userName,String accountIdKey,String operatorIdKey) throws DataAccessException;
+    String findUserJwtByNameAndAccountGuidAndOperatorGuid(String userName,String accountGuid,String operatorGuid) throws DataAccessException;
     
     String findUserSeedById(String id,String accountName) throws DataAccessException;
     
@@ -110,7 +110,7 @@ public interface IPersistentContext {
     
     List<IAccount> findAllAccountsByOperatorIdKey(String idKey) throws DataAccessException;
     
-    List<IUser> findAllUsersByAccountIdKeyAndOperatorIdKey(String accountIdKey,String operatorIdKey) throws DataAccessException;
+    List<IUser> findAllUsersByAccountGuidAndOperatorGuid(String accountGuid,String operatorGuid) throws DataAccessException;
     
     SimpleNKeyPair findSigningSeedBySigningKey(String signingKey) throws DataAccessException;
     
