@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 import org.natspal.nconsole.client.api.impl.Operator;
 import org.natspal.nconsole.client.api.impl.OperatorConfig;
 import org.natspal.nconsole.client.api.impl.SigningKey;

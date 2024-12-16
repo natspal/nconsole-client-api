@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 import org.natspal.nconsole.client.api.impl.Account;
 import org.natspal.nconsole.client.api.impl.AccountConfig;
 import org.natspal.nconsole.client.api.impl.AccountDefaultPermission;
