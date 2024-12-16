@@ -17,9 +17,9 @@ package org.natspal.nconsole.client.api;
  *
  */
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,6 @@ import org.natspal.nconsole.client.api.impl.Account;
 import org.natspal.nconsole.client.api.impl.AccountConfig;
 import org.natspal.nconsole.client.api.impl.AccountDefaultPermission;
 import org.natspal.nconsole.client.api.impl.AccountLimits;
-import org.natspal.nconsole.client.api.impl.AuditMetadata;
 import org.natspal.nconsole.client.api.impl.Export;
 import org.natspal.nconsole.client.api.impl.Import;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
@@ -391,7 +390,7 @@ public class AccountTest {
         assertEquals(Integer.valueOf(10000),doc.read("$.nats.limits.payload"));
         assertEquals(Integer.valueOf(0),doc.read("$.nats.limits.streams"));
         assertEquals(Integer.valueOf(-1),doc.read("$.nats.limits.subs"));
-        assertTrue(doc.read("$.nats.limits.wildcards"));
+        assertEquals(true,doc.read("$.nats.limits.wildcards"));
         
         assertEquals(EntityType.account.name(),doc.read("$.nats.type"));
         

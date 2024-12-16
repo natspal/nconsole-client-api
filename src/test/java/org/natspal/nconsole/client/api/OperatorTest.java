@@ -17,9 +17,9 @@ package org.natspal.nconsole.client.api;
  *
  */
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashSet;
@@ -285,7 +285,7 @@ public class OperatorTest {
         
         assertEquals("ACK5GDGC5RYTIVBHEELIPQYY6GABNSMB2BCFSMWHXV3IEFB2VSQ2ADE7",doc.read("$.nats.system_account"));
         
-        assertTrue(doc.read("$.nats.strict_signing_key_usage"));
+        assertEquals(true,doc.read("$.nats.strict_signing_key_usage"));
         
         assertEquals(EntityType.operator.name(),doc.read("$.nats.type"));
         

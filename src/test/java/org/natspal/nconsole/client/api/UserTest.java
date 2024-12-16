@@ -17,8 +17,8 @@ package org.natspal.nconsole.client.api;
  *
  */
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 import org.natspal.nconsole.client.api.impl.PublishPermission;
