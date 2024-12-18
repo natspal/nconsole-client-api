@@ -136,15 +136,28 @@ public interface ISigningKey extends IAuditMetadata {
 	public void setKeyType(KeyType keyType);
 	
 	/**
-	 * @return the referenceGuid
+	 * @return the entityGuid
 	 */
-	@JsonProperty("reference_guid")
-	public String getReferenceGuid();
+	@JsonProperty("entity_guid")
+	public String getEntityGuid();
 
 	/**
-	 * @param referenceGuid the referenceGuid to set
+	 * @param entityGuid the entityGuid to set
 	 */
-	@JsonProperty("reference_guid")
-	public void setReferenceGuid(String referenceGuid);
+	@JsonProperty("entity_guid")
+	public void setEntityGuid(String entityGuid);
+	
+	/**
+	 * @return the ancestorGuid
+	 */
+	@JsonProperty("ancestor_guid")
+	public String getAncestorGuid();
+
+	/**
+	 * @param ancestorGuid the ancestorGuid to set
+	 */
+	@JsonProperty("ancestor_guid")
+	public void setAncestorGuid(String ancestorGuid);
+	
 
 }

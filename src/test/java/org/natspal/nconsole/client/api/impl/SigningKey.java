@@ -42,7 +42,9 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 	
 	private String secret;
 	
-	private String referenceGuid;
+	private String entityGuid;
+	
+	private String ancestorGuid;
 	
 	private EntityType entityType;
 	
@@ -57,7 +59,7 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 	}
 	
 	public SigningKey(String description, Long issueAt, Long expiry, String guid,
-			boolean isDefault, String key, EntityType entityType, KeyType keyType,String referenceGuid) {
+			boolean isDefault, String key, EntityType entityType, KeyType keyType,String entityGuid, String ancestorGuid) {
 		super();
 		this.description = description;
 		this.issueAt = issueAt;
@@ -67,7 +69,8 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 		this.key = key;
 		this.entityType = entityType;
 		this.keyType = keyType;
-		this.referenceGuid = referenceGuid;
+		this.entityGuid = entityGuid;
+		this.ancestorGuid = ancestorGuid;
 	}
 
 	@Override
@@ -161,13 +164,13 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 	}
 
 	@Override
-	public String getReferenceGuid() {
-		return referenceGuid;
+	public String getEntityGuid() {
+		return entityGuid;
 	}
 
 	@Override
-	public void setReferenceGuid(String referenceGuid) {
-		this.referenceGuid = referenceGuid;
+	public void setEntityGuid(String entityGuid) {
+		this.entityGuid = entityGuid;
 	}
 	
 	@Override
@@ -185,6 +188,16 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 			return false;
 		SigningKey other = (SigningKey) obj;
 		return Objects.equals(guid, other.guid);
+	}
+
+	@Override
+	public String getAncestorGuid() {
+		return ancestorGuid;
+	}
+
+	@Override
+	public void setAncestorGuid(String ancestorGuid) {
+		this.ancestorGuid = ancestorGuid;
 	}
 
 }

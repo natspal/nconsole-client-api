@@ -19,32 +19,33 @@ package org.natspal.nconsole.client.jwt;
 
 public interface JsonClaims extends JwtClaims {
     
-	String GUID = "guid";
+	String GUID 				= "guid";
     
-	String AUDIT_META_DATA = "audit_meta_data";
+	String AUDIT_META_DATA 		= "audit_meta_data";
 	
-	String SIGNING_KEY_LIST = "signing_key_list";
+	String SIGNING_KEY_LIST 	= "signing_key_list";
     
 	interface AUDIT_DATA {
 		
-		String CREATE_USER_ID = "create_user_id";
-		String UPDATE_USER_ID = "update_user_id";
-		String CREATE_DATE   = "create_date";
-		String UPDATE_DATE   = "update_date";
+		String CREATE_USER_ID 	= "create_user_id";
+		String UPDATE_USER_ID 	= "update_user_id";
+		String CREATE_DATE   	= "create_date";
+		String UPDATE_DATE   	= "update_date";
 		
 		
 	}
     
 	interface SIGNING_KEY {
-		String DESCRIPTION = "description";
-		String ISSUE_AT = "iat";
-		String EXPIRE_AT = "exp";
-		String ID = "id";
-		String IS_DEFAULT = "is_default";
-		String KEY = "key";
-		String ENTITY_TYPE = "entity_type";
-		String KEY_TYPE = "key_type";
-		String REFERENCE_GUID = "reference_guid";
+		String DESCRIPTION 		= "description";
+		String ISSUE_AT 		= "iat";
+		String EXPIRE_AT 		= "exp";
+		String ID 				= "id";
+		String IS_DEFAULT 		= "is_default";
+		String KEY 				= "key";
+		String ENTITY_TYPE 		= "entity_type";
+		String KEY_TYPE 		= "key_type";
+		String ENTITY_GUID 		= "entity_guid";
+		String ANCESTOR_GUID 	= "ancestor_guid";
 		
 	}
 	

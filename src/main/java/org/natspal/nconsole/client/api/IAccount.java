@@ -24,16 +24,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public interface IAccount<T> extends ISecretEntity<T> {
     
     /**
-     * @return the operatorIdKey
+     * @return the operatorGuid
      */
-    @JsonProperty("operator_idkey")
-    public String getOperatorIdKey();
+    @JsonProperty("operator_guid")
+    public String getOperatorGuid();
 
     /**
-     * @param operatorIdKey the operatorIdKey to set
+     * @param operatorGuid the operatorGuid to set
      */
-    @JsonProperty("operator_idkey")
-    public void setOperatorIdKey(String operatorIdKey);
+    @JsonProperty("operator_guid")
+    public void setOperatorGuid(String operatorGuid);
    
     
     /**

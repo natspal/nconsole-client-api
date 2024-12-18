@@ -130,15 +130,30 @@ public interface IPersistentContext {
     /** Signing Key methods                       */
     /**********************************************/
 	
-	ISigningKey createSigningKey(ISigningKey signingKey) throws DataAccessException;
+	ISigningKey        createSigningKey(ISigningKey signingKey) 			 throws DataAccessException;
 	
-	ISigningKey updateSigningKey(ISigningKey signingKey) throws DataAccessException;
+	ISigningKey        findSigningKeyByGuid(String guid)        			 throws DataAccessException;
 	
-	ISigningKey findSigningKeyByGuid(String guid) throws DataAccessException;
+	ISigningKey        findOperatorSigningKeyByKey(String key)  			 throws DataAccessException;
 	
-	ISigningKey findOperatorSigningKeyByKey(String key) throws DataAccessException;
+	ISigningKey        updateSigningKey(ISigningKey signingKey) 			 throws DataAccessException;
 	
-	List<ISigningKey> findOperatorSigningKeyByReferenceGuid(String refGuid) throws DataAccessException;
+	void               deleteSigningKey(String guid) 			             throws DataAccessException;
+	
+	List<ISigningKey>  findKeys(String entityGuid
+			  					,String ancestorGuid
+			  					,KeyType keyType
+			  					,EntityType entityType)          		     throws DataAccessException;
+	
+	List<ISigningKey>  findOperatorSigningKeys(String entityGuid
+											  ,String ancestorGuid)          throws DataAccessException;
+	
+	List<ISigningKey>  findAccountSigningKeys(String entityGuid
+			                                  ,String ancestorGuid)          throws DataAccessException;
+	
+	List<ISigningKey>  findAllAccountSigningKeys(String ancestorGuid)        throws DataAccessException;
+	
+	ISigningKey        findUserIdKey(String entityGuid, String ancestorGuid) throws DataAccessException;
     
 	/**********************************************/
     /** End Signing Key methods                       */

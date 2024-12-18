@@ -57,7 +57,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
             throw new JWTDecodeException("Parsing the Payload's JSON resulted on a Null map");
         }
 
-        String operatorIdKey = getString(tree, "operator_idkey");
+        String operatorGuid = getString(tree, JwtClaims.OPERATOR_GUID);
         
         String id = getString(tree, JsonClaims.GUID);
         
@@ -106,7 +106,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
         String jwtId = getString(tree, JwtClaims.JWT_ID);
         
         
-        Account account = new Account(operatorIdKey,jwtId, issuedAt,expiry, issuer, name, subject, accountConfig);
+        Account account = new Account(operatorGuid,jwtId, issuedAt,expiry, issuer, name, subject, accountConfig);
         
         account.setGuid(id);
         account.setCreateDate(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_DATE));

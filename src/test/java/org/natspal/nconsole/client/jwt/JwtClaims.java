@@ -34,6 +34,8 @@ public interface JwtClaims {
     String EXPIRY = "exp";
     String NAME = "name";
     String JWT_ID = "jti";
+    String OPERATOR_GUID = "operator_guid";
+    String ACCOUNT_GUID = "account_guid";
     
     //Account Nats config
     

@@ -80,9 +80,10 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         		String  key         = getString(map, JsonClaims.SIGNING_KEY.KEY);
         		String entityType   = getString(map, JsonClaims.SIGNING_KEY.ENTITY_TYPE);
         		String keyType      = getString(map, JsonClaims.SIGNING_KEY.KEY_TYPE);
-        		String referenceGuid   = getString(map, JsonClaims.SIGNING_KEY.REFERENCE_GUID);
+        		String entityGuid   = getString(map, JsonClaims.SIGNING_KEY.ENTITY_GUID);
+        		String ancestorGuid = getString(map, JsonClaims.SIGNING_KEY.ANCESTOR_GUID);
         		
-        		SigningKey signingKey = new SigningKey(description, issueAt, expireAt, sid, isDefault, key, EntityType.valueOf(entityType),KeyType.valueOf(keyType),referenceGuid);
+        		SigningKey signingKey = new SigningKey(description, issueAt, expireAt, sid, isDefault, key, EntityType.valueOf(entityType),KeyType.valueOf(keyType),entityGuid,ancestorGuid);
         		
         		signingKeyList.add(signingKey); 
         	}

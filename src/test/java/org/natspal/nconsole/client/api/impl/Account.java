@@ -23,7 +23,7 @@ public class Account extends AbstractSecretEntity<AccountConfig>  implements IAc
     
     private static final long serialVersionUID = 3987982494302892772L;
     
-    private String operatorIdKey; 
+    private String operatorGuid; 
     
     private String signedBy; 
     
@@ -34,35 +34,35 @@ public class Account extends AbstractSecretEntity<AccountConfig>  implements IAc
     public Account() {
     }
     
-    public Account(String operatorIdKey
+    public Account(String operatorGuid
             , String jwtId
             , long issueAt, long expiry
             , String issuer, String name
             , String subject, AccountConfig nats) {
         super(null, jwtId, issueAt, expiry, issuer, name, subject, nats);
-        this.operatorIdKey = operatorIdKey;
+        this.operatorGuid = operatorGuid;
     }
     
-    public Account(String operatorIdKey
+    public Account(String operatorGuid
             ,String jwt, String jwtId
             , long issueAt, long expiry
             , String issuer, String name
             , String subject, AccountConfig nats) {
         super(jwt, jwtId, issueAt, expiry, issuer, name, subject, nats);
-        this.operatorIdKey = operatorIdKey;
+        this.operatorGuid = operatorGuid;
     }
 
 
 
     @Override
-    public String getOperatorIdKey() {
-        return operatorIdKey;
+    public String getOperatorGuid() {
+        return operatorGuid;
     }
 
     
     @Override
-    public void setOperatorIdKey(String operatorId) {
-        this.operatorIdKey = operatorId;
+    public void setOperatorGuid(String operatorGuid) {
+        this.operatorGuid = operatorGuid;
     }
     
     /**

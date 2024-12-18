@@ -76,7 +76,8 @@ public class OperatorTest {
             + "  	\"key\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ\",\n"
             + "  	\"entity_type\": \"operator\",\n"
             + "  	\"key_type\": \"sign\",\n"
-            + "  	\"reference_guid\": \"tryry-hghgg-767hgfhf-hggjgh\"\n"
+            + "  	\"entity_guid\": \"tryry-hghgg-767hgfhf-hggjgh\",\n"
+            + "  	\"ancestor_guid\": \"tryry-hghgg-767hgfhf-hggjgh\"\n"
             + "		}],"
             + "     \"strict_signing_key_usage\": true, \n"
             + "    \"system_account\": \"ACK5GDGC5RYTIVBHEELIPQYY6GABNSMB2BCFSMWHXV3IEFB2VSQ2ADE7\",\n"
@@ -140,7 +141,8 @@ public class OperatorTest {
         assertEquals("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ",signingKey.getKey());
         assertEquals(EntityType.operator,signingKey.getEntityType());
         assertEquals(KeyType.sign,signingKey.getKeyType());
-        assertEquals("tryry-hghgg-767hgfhf-hggjgh",signingKey.getReferenceGuid());
+        assertEquals("tryry-hghgg-767hgfhf-hggjgh",signingKey.getEntityGuid());
+        assertEquals("tryry-hghgg-767hgfhf-hggjgh",signingKey.getAncestorGuid());
         
         
         
@@ -208,7 +210,7 @@ public class OperatorTest {
         
         Set<SigningKey> signingKeyList = new HashSet<SigningKey>();
         
-        SigningKey signingKey = new SigningKey("Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign,"dfgh-dfjgj-dfjhgjg-dfjhgfjhf");
+        SigningKey signingKey = new SigningKey("Primary signing key for production environment", 1698203628000l, 1713763628000l, "key-1234567890abcdef", true, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ", EntityType.operator, KeyType.sign,"dfgh-dfjgj-dfjhgjg-dfjhgfjhf","dfgh-dfjgj-dfjhgjg-dfjhgfjhf");
         
         signingKey.setCreateDate(1698203628000l);
         signingKey.setUpdateDate(1654203628000l);
@@ -273,7 +275,8 @@ public class OperatorTest {
         }catch (PathNotFoundException e) {
 			assertEquals("No results for path: $['nats']['signing_key_list'][0]['secret']",e.getMessage());
 		}
-        assertEquals("dfgh-dfjgj-dfjhgjg-dfjhgfjhf",doc.read("$.nats.signing_key_list[0].reference_guid"));
+        assertEquals("dfgh-dfjgj-dfjhgjg-dfjhgfjhf",doc.read("$.nats.signing_key_list[0].entity_guid"));
+        assertEquals("dfgh-dfjgj-dfjhgjg-dfjhgfjhf",doc.read("$.nats.signing_key_list[0].ancestor_guid"));
         
         
         // Signing key audit meta data
