@@ -13,7 +13,10 @@
 
 package org.natspal.nconsole.client.api;
 
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 /***
  * 
@@ -27,6 +30,7 @@ public interface IAccount<T> extends ISecretEntity<T> {
      * @return the operatorGuid
      */
     @JsonProperty("operator_guid")
+    @JsonView(Views.Public.class)
     public String getOperatorGuid();
 
     /**
@@ -40,6 +44,7 @@ public interface IAccount<T> extends ISecretEntity<T> {
 	 * @return the signedBy
 	 */
     @JsonProperty("signed_by")
+    @JsonView(Views.Public.class)
 	public String getSignedBy();
 	/**
 	 * @param signedBy the signedBy to set

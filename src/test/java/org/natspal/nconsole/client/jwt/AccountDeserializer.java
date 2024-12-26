@@ -101,7 +101,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
         long issuedAt = issAt==null?0l:issAt;
         
         Long exp = getLong(tree, JwtClaims.EXPIRY);
-        long expiry = exp==null?0l:exp;
+        Long expiry = exp==null?0l:exp;
         
         String jwtId = getString(tree, JwtClaims.JWT_ID);
         

@@ -13,7 +13,11 @@
 package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
+
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 /***
  * 
  * @author Amit K Gupta
@@ -26,6 +30,7 @@ public interface IUserConfig extends Serializable {
      * @return the publish
      */
     @JsonProperty("pub")
+    @JsonView(Views.Jwt.class)
     public IPublishPermission getPublish();
 
     /**
@@ -38,6 +43,7 @@ public interface IUserConfig extends Serializable {
      * @return the subscribe
      */
     @JsonProperty("sub")
+    @JsonView(Views.Jwt.class)
     public ISubscribePermission getSubscribe();
 
     /**
@@ -50,6 +56,7 @@ public interface IUserConfig extends Serializable {
      * @return the subscriptions
      */
     @JsonProperty("subs")
+    @JsonView(Views.Jwt.class)
     public int getSubscriptions();
 
     /**
@@ -62,6 +69,7 @@ public interface IUserConfig extends Serializable {
      * @return the data
      */
     @JsonProperty("data")
+    @JsonView(Views.Jwt.class)
     public int getData();
 
     /**
@@ -73,6 +81,7 @@ public interface IUserConfig extends Serializable {
      * @return the payload
      */
     @JsonProperty("payload")
+    @JsonView(Views.Jwt.class)
     public int getPayload();
 
     /**
@@ -85,6 +94,7 @@ public interface IUserConfig extends Serializable {
      * @return the issuerAccount
      */
     @JsonProperty("issuer_account")
+    @JsonView(Views.Jwt.class)
     public String getIssuerAccount();
     /**
      * @param issuerAccount the issuerAccount to set
@@ -96,6 +106,7 @@ public interface IUserConfig extends Serializable {
      * @return the type
      */
     @JsonProperty("type")
+    @JsonView(Views.Jwt.class)
     public EntityType getType();
 
     /**
@@ -108,6 +119,7 @@ public interface IUserConfig extends Serializable {
      * @return the version
      */
     @JsonProperty("version")
+    @JsonView(Views.Jwt.class)
     public int getVersion();
 
     /**

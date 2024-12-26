@@ -17,7 +17,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 /***
  * 
@@ -31,6 +34,7 @@ public interface IAccountConfig extends Serializable{
      * @return the exports
      */
     @JsonProperty("exports")
+    @JsonView(Views.Jwt.class)
     public List<? extends IExport> getExports();
 
     /**
@@ -43,6 +47,7 @@ public interface IAccountConfig extends Serializable{
      * @return the imports
      */
     @JsonProperty("imports")
+    @JsonView(Views.Jwt.class)
     public List<? extends IImport> getImports();
 
     /**
@@ -55,6 +60,7 @@ public interface IAccountConfig extends Serializable{
      * @return the defaultPermissions
      */
     @JsonProperty("default_permissions")
+    @JsonView(Views.Jwt.class)
     public IAccountDefaultPermission getDefaultPermissions();
 
     /** 
@@ -67,6 +73,7 @@ public interface IAccountConfig extends Serializable{
      * @return the limits
      */
     @JsonProperty("limits")
+    @JsonView(Views.Jwt.class)
     public IAccountLimits getLimits();
 
     /**
@@ -79,6 +86,7 @@ public interface IAccountConfig extends Serializable{
      * @return the signingKeys
      */
     @JsonProperty("signing_keys")
+    @JsonView(Views.Jwt.class)
     public String[] getSigningKeys();
 
     /**
@@ -91,6 +99,7 @@ public interface IAccountConfig extends Serializable{
      * @return the signingKeyList
      */
     @JsonProperty("signing_key_list")
+    @JsonView(Views.Public.class)
     public Set<? extends ISigningKey> getSigningKeyList();
 
     /**
@@ -104,6 +113,7 @@ public interface IAccountConfig extends Serializable{
      * @return the type
      */
     @JsonProperty("type")
+    @JsonView(Views.Jwt.class)
     public EntityType getType();
 
     /**
@@ -116,6 +126,7 @@ public interface IAccountConfig extends Serializable{
      * @return the version
      */
     @JsonProperty("version")
+    @JsonView(Views.Jwt.class)
     public int getVersion();
 
     /**

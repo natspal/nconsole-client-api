@@ -12,8 +12,11 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api;
 
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 /****
  * 
  * @author Amit K Gupta
@@ -26,6 +29,7 @@ public interface IOperator<T>  extends ISecretEntity<T> {
      */
     @JsonProperty("create_system_account")
     @JsonIgnore
+    @JsonView(Views.Public.class)
     public boolean isCreateSystemAccount();
 
     /**
@@ -39,6 +43,7 @@ public interface IOperator<T>  extends ISecretEntity<T> {
 	 * @return the signedBy
 	 */
     @JsonProperty("signed_by")
+    @JsonView(Views.Public.class)
 	public String getSignedBy();
 
 	/**

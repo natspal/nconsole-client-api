@@ -14,7 +14,11 @@
 package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
+
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 /***
  * 
@@ -26,6 +30,7 @@ public interface IImport extends Serializable {
 	/**
      * @return the guid
      */
+	@JsonView(Views.Public.class)
     public String getGuid();
 
     /**
@@ -37,6 +42,7 @@ public interface IImport extends Serializable {
 	 * @return the name
 	 */
 	@JsonProperty("name")
+	@JsonView(Views.Jwt.class)
 	public String getName();
 
 	/**
@@ -49,6 +55,7 @@ public interface IImport extends Serializable {
 	 * @return the subject
 	 */
 	@JsonProperty("subject")
+	@JsonView(Views.Jwt.class)
 	public String getSubject();
 
 	/**
@@ -61,6 +68,7 @@ public interface IImport extends Serializable {
 	 * @return the account
 	 */
 	@JsonProperty("account")
+	@JsonView(Views.Jwt.class)
 	public String getAccount();
 
 	/**
@@ -73,6 +81,7 @@ public interface IImport extends Serializable {
 	 * @return the localSubject
 	 */
 	@JsonProperty("local_subject")
+	@JsonView(Views.Jwt.class)
 	public String getLocalSubject();
 
 	/**
@@ -85,6 +94,7 @@ public interface IImport extends Serializable {
 	 * @return the type
 	 */
 	@JsonProperty("type")
+	@JsonView(Views.Jwt.class)
 	public ExportType getType();
 
 	/**

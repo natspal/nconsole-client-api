@@ -31,9 +31,9 @@ public abstract class AbstractSecretEntity<T> extends AuditMetadata implements I
     
     private String jwtId;
     
-    private long issueAt;
+    private Long issueAt;
     
-    private long expiry;
+    private Long expiry;
     
     private String issuer;
     
@@ -51,7 +51,7 @@ public abstract class AbstractSecretEntity<T> extends AuditMetadata implements I
     }
     
     protected AbstractSecretEntity(String jwt
-           , String jwtId, long issueAt, long expiry 
+           , String jwtId, Long issueAt, Long expiry 
            , String issuer, String name
            , String subject, T nats) {
         this.jwt = jwt;
@@ -109,28 +109,28 @@ public abstract class AbstractSecretEntity<T> extends AuditMetadata implements I
     /**
      * @return the issueAt
      */
-    public long getIssueAt() {
+    public Long getIssueAt() {
         return issueAt;
     }
 
     /**
      * @param issueAt the issueAt to set
      */
-    public void setIssueAt(long issueAt) {
+    public void setIssueAt(Long issueAt) {
         this.issueAt = issueAt;
     }
 
     /**
      * @return the expiry
      */
-    public long getExpiry() {
+    public Long getExpiry() {
         return expiry;
     }
 
     /**
      * @param expiry the expiry to set
      */
-    public void setExpiry(long expiry) {
+    public void setExpiry(Long expiry) {
         this.expiry = expiry;
     }
     /**

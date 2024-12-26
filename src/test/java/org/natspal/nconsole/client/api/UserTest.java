@@ -138,9 +138,9 @@ public class UserTest {
         
         user.setJwtId("AQAMGCOPWDUUEZYW7ILJW6N5WBUXIE6MUPIRIML6DVWVYF7X4P6A");
         
-        user.setIssueAt(1651011888);
+        user.setIssueAt(1651011888l);
         
-        user.setExpiry(1726642150);
+        user.setExpiry(1726642150l);
         
         user.setIssuer("AC36YMF6TYR7F2RCSGOVYUBP35L6P5LHU7Q5JG2XMXK7IZ54X2QATDOY");
         
@@ -149,10 +149,10 @@ public class UserTest {
         user.setSubject("UCS7KJIXYPAQUNXFM5BQUR2CBBNV2AWEH4YTJAA2DYFCE7LXQUXA2KB7");
         
         
-        user.setCreateUserId(347347352);
-        user.setUpdateUserId(345638567);
-        user.setCreateDate(77868667);
-        user.setUpdateDate(6767676);
+        user.setCreateUserId(347347352l);
+        user.setUpdateUserId(345638567l);
+        user.setCreateDate(77868667l);
+        user.setUpdateDate(6767676l);
         
         IUserConfig userConfig = new UserConfig();
         

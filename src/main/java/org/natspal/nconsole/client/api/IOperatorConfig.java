@@ -15,7 +15,10 @@ package org.natspal.nconsole.client.api;
 import java.io.Serializable;
 import java.util.Set;
 
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 /****
  * 
  * @author Amit K Gupta
@@ -28,6 +31,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the accountServerUrl
      */
     @JsonProperty("account_server_url")
+    @JsonView(Views.Jwt.class)
     public String getAccountServerUrl();
 
     /**
@@ -40,6 +44,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the operatorServiceUrls
      */
     @JsonProperty("operator_service_urls")
+    @JsonView(Views.Jwt.class)
     public String[] getOperatorServiceUrls();
 
     /**
@@ -52,6 +57,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the signingKeys
      */
     @JsonProperty("signing_keys")
+    @JsonView(Views.Jwt.class)
     public String[] getSigningKeys();
 
     /**
@@ -66,6 +72,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the signingKeyList
      */
     @JsonProperty("signing_key_list")
+    @JsonView(Views.Public.class)
     public Set<? extends ISigningKey> getSigningKeyList();
 
     /**
@@ -79,6 +86,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the strictSigningKeyUsage
      */
     @JsonProperty("strict_signing_key_usage")
+    @JsonView(Views.Jwt.class)
     public boolean isStrictSigningKeyUsage();
 
     /**
@@ -91,6 +99,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the systemAccount
      */
     @JsonProperty("system_account")
+    @JsonView(Views.Jwt.class)
     public String getSystemAccount();
 
     /**
@@ -104,6 +113,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the type
      */
     @JsonProperty("type")
+    @JsonView(Views.Jwt.class)
     public EntityType getType();
 
     /**
@@ -117,6 +127,7 @@ public interface IOperatorConfig extends Serializable {
      * @return the version
      */
     @JsonProperty("version")
+    @JsonView(Views.Jwt.class)
     public int getVersion();
 
     /**

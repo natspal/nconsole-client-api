@@ -23,49 +23,49 @@ import org.natspal.nconsole.client.api.IAuditMetadata;
 
 public class AuditMetadata implements IAuditMetadata {
 
-	private long createUserId;
-	private long updateUserId;
-	private long createDate;
-	private long updateDate;
+	private Long createUserId;
+	private Long updateUserId;
+	private Long createDate;
+	private Long updateDate;
 	
 	
 	@Override
-	public long getCreateUserId() {
+	public Long getCreateUserId() {
 		return createUserId;
 	}
 
 	@Override
-	public void setCreateUserId(long createUserId) {
+	public void setCreateUserId(Long createUserId) {
 		this.createUserId = createUserId;
 	}
 
 	@Override
-	public long getUpdateUserId() {
+	public Long getUpdateUserId() {
 		return updateUserId;
 	}
 
 	@Override
-	public void setUpdateUserId(long updateUserId) {
+	public void setUpdateUserId(Long updateUserId) {
 		this.updateUserId = updateUserId;
 	}
 
 	@Override
-	public long getCreateDate() {
+	public Long getCreateDate() {
 		return createDate;
 	}
 
 	@Override
-	public void setCreateDate(long createDate) {
+	public void setCreateDate(Long createDate) {
 		this.createDate = createDate;
 	}
 
 	@Override
-	public long getUpdateDate() {
+	public Long getUpdateDate() {
 		return updateDate;
 	}
 
 	@Override
-	public void setUpdateDate(long updateDate) {
+	public void setUpdateDate(Long updateDate) {
 		this.updateDate = updateDate;
 	}
 

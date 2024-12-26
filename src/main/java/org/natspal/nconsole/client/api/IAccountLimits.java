@@ -14,7 +14,11 @@
 package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
+
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 /*****
  * 
  * @author Amit K Gupta
@@ -26,6 +30,7 @@ public interface IAccountLimits extends Serializable {
      * @return the connections
      */
     @JsonProperty("conn")
+    @JsonView(Views.Jwt.class)
     public int getConnections();
 
     /**
@@ -38,6 +43,7 @@ public interface IAccountLimits extends Serializable {
      * @return the consumer
      */
     @JsonProperty("consumer")
+    @JsonView(Views.Jwt.class)
     public int getConsumer();
 
     /**
@@ -50,6 +56,7 @@ public interface IAccountLimits extends Serializable {
      * @return the data
      */
     @JsonProperty("data")
+    @JsonView(Views.Jwt.class)
     public int getData();
 
     /**
@@ -62,6 +69,7 @@ public interface IAccountLimits extends Serializable {
      * @return the diskStorage
      */
     @JsonProperty("disk_storage")
+    @JsonView(Views.Jwt.class)
     public long getDiskStorage();
 
     /**
@@ -74,6 +82,7 @@ public interface IAccountLimits extends Serializable {
      * @return the exports
      */
     @JsonProperty("exports")
+    @JsonView(Views.Jwt.class)
     public int getExports();
 
     /**
@@ -86,6 +95,7 @@ public interface IAccountLimits extends Serializable {
      * @return the imports
      */
     @JsonProperty("imports")
+    @JsonView(Views.Jwt.class)
     public int getImports();
 
     /**
@@ -98,6 +108,7 @@ public interface IAccountLimits extends Serializable {
      * @return the leaf
      */
     @JsonProperty("leaf")
+    @JsonView(Views.Jwt.class)
     public int getLeaf();
 
     /**
@@ -110,6 +121,7 @@ public interface IAccountLimits extends Serializable {
      * @return the memStorage
      */
     @JsonProperty("mem_storage")
+    @JsonView(Views.Jwt.class)
     public long getMemStorage();
 
     /**
@@ -122,6 +134,7 @@ public interface IAccountLimits extends Serializable {
      * @return the payload
      */
     @JsonProperty("payload")
+    @JsonView(Views.Jwt.class)
     public int getPayload();
 
     /**
@@ -134,6 +147,7 @@ public interface IAccountLimits extends Serializable {
      * @return the streams
      */
     @JsonProperty("streams")
+    @JsonView(Views.Jwt.class)
     public int getStreams();
 
     /**
@@ -146,6 +160,7 @@ public interface IAccountLimits extends Serializable {
      * @return the subscriptions
      */
     @JsonProperty("subs")
+    @JsonView(Views.Jwt.class)
     public int getSubscriptions();
 
     /**
@@ -158,6 +173,7 @@ public interface IAccountLimits extends Serializable {
      * @return the wildcards
      */
     @JsonProperty("wildcards")
+    @JsonView(Views.Jwt.class)
     public boolean isWildcards();
 
     /**

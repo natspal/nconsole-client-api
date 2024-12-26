@@ -234,9 +234,9 @@ public class AccountTest {
         
         account.setJwtId("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA");
         
-        account.setIssueAt(1634840614);
+        account.setIssueAt(1634840614l);
         
-        account.setExpiry(1726642150);
+        account.setExpiry(1726642150l);
         
         account.setIssuer("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK");
         
@@ -244,10 +244,10 @@ public class AccountTest {
         
         account.setSubject("ACHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM");
         
-        account.setCreateUserId(347347352);
-        account.setUpdateUserId(345638567);
-        account.setCreateDate(77868667);
-        account.setUpdateDate(6767676);
+        account.setCreateUserId(347347352l);
+        account.setUpdateUserId(345638567l);
+        account.setCreateDate(77868667l);
+        account.setUpdateDate(6767676l);
         
         IAccountConfig accountConfig = new AccountConfig();
         

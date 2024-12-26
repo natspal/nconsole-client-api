@@ -13,8 +13,12 @@
 package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
+
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 /****
  * 
  * @author Amit K Gupta
@@ -26,6 +30,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
 	/**
      * @return the guid
      */
+	@JsonView(Views.Public.class)
     public String getGuid();
 
     /**
@@ -37,6 +42,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @return the jwtId
     */
    @JsonProperty("jti")
+   @JsonView(Views.Jwt.class)
    public String getJwtId();
 
    /**
@@ -50,30 +56,33 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @return the issueAt
     */
    @JsonProperty("iat")
-   public long getIssueAt();
+   @JsonView(Views.Jwt.class)
+   public Long getIssueAt();
 
    /**
     * @param issueAt the issueAt to set
     */
    @JsonProperty("iat")
-   public void setIssueAt(long issueAt);
+   public void setIssueAt(Long issueAt);
    
    /**
     * @return the expiry
     */
    @JsonProperty("exp")
-   public long getExpiry();
+   @JsonView(Views.Jwt.class)
+   public Long getExpiry();
 
    /**
     * @param expiry the expiry to set
     */
    @JsonProperty("exp")
-   public void setExpiry(long expiry);
+   public void setExpiry(Long expiry);
    
    /**
     * @return the issuer
     */
    @JsonProperty("iss")
+   @JsonView(Views.Jwt.class)
    public String getIssuer();
 
    /**
@@ -87,6 +96,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @return the name
     */
    @JsonProperty("name")
+   @JsonView(Views.Jwt.class)
    public String getName();
 
    /**
@@ -99,6 +109,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @return the subject
     */
    @JsonProperty("sub")
+   @JsonView(Views.Jwt.class)
    public String getSubject();
 
    /**
@@ -112,6 +123,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @return the nats
     */
    @JsonProperty("nats")
+   @JsonView(Views.Jwt.class)
    public T getNats();
 
    /**
@@ -125,6 +137,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     */
    @JsonProperty("jwt")
    @JsonIgnore
+   @JsonView(Views.Public.class)
    public String getJwt();
 
    /**

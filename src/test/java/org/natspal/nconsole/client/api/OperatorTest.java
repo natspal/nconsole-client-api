@@ -178,9 +178,9 @@ public class OperatorTest {
         operator.setGuid("gfgh6755-gfds-kjy7-76gr-hgr5ewdsqght");
         operator.setJwtId("S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA");
         
-        operator.setIssueAt(1634840614);
+        operator.setIssueAt(1634840614l);
         
-        operator.setExpiry(1726642150);
+        operator.setExpiry(1726642150l);
         
         operator.setIssuer("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK");
         
@@ -191,10 +191,10 @@ public class OperatorTest {
         
         //IAuditMetadata audit_meta_data = new AuditMetadata();
         
-        operator.setCreateUserId(347347352);
-        operator.setUpdateUserId(345638567);
-        operator.setCreateDate(77868667);
-        operator.setUpdateDate(6767676);
+        operator.setCreateUserId(347347352l);
+        operator.setUpdateUserId(345638567l);
+        operator.setCreateDate(77868667l);
+        operator.setUpdateDate(6767676l);
         
         //operator.setAuditMetadata(audit_meta_data);
         
@@ -214,8 +214,8 @@ public class OperatorTest {
         
         signingKey.setCreateDate(1698203628000l);
         signingKey.setUpdateDate(1654203628000l);
-        signingKey.setCreateUserId(2452675);
-        signingKey.setUpdateUserId(5683636);
+        signingKey.setCreateUserId(2452675l);
+        signingKey.setUpdateUserId(5683636l);
         
         signingKey.setSecret("Should not be serialized");
         

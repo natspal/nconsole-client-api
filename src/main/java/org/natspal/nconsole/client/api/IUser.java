@@ -12,7 +12,10 @@
 // limitations under the License.
 package org.natspal.nconsole.client.api;
 
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 /***
  * 
@@ -26,6 +29,7 @@ public interface IUser<T> extends ISecretEntity<T> {
 	 * @return the operatorGuid
 	 */
 	@JsonProperty("operator_guid")
+	@JsonView(Views.Public.class)
 	public String getOperatorGuid();
 
 	/**
@@ -38,6 +42,7 @@ public interface IUser<T> extends ISecretEntity<T> {
 	 * @return the accountGuid
 	 */
 	@JsonProperty("account_guid")
+	@JsonView(Views.Public.class)
 	public String getAccountGuid();
 
 	/**
@@ -50,6 +55,7 @@ public interface IUser<T> extends ISecretEntity<T> {
 	 * @return the accountSigningKeyGuid
 	 */
 	@JsonProperty("account_signing_key_guid")
+	@JsonView(Views.Public.class)
 	public String getAccountSigningKeyGuid();
 
 	/**

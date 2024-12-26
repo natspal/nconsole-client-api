@@ -14,7 +14,11 @@
 package org.natspal.nconsole.client.api;
 
 import java.io.Serializable;
+
+import org.natspal.nconsole.client.views.Views;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 /***
  * 
  * @author Amit K Gupta
@@ -28,6 +32,7 @@ public interface IAccountDefaultPermission extends Serializable {
      * @return the publish
      */
     @JsonProperty("pub")
+    @JsonView(Views.Jwt.class)
     public IPublishPermission getPublish();
 
     /**
@@ -40,6 +45,7 @@ public interface IAccountDefaultPermission extends Serializable {
      * @return the subscribe
      */
     @JsonProperty("sub")
+    @JsonView(Views.Jwt.class)
     public ISubscribePermission getSubscribe();
 
     /**
