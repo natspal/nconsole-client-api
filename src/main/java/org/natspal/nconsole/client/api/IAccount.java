@@ -41,15 +41,15 @@ public interface IAccount<T> extends ISecretEntity<T> {
    
     
     /**
-	 * @return the signedBy
+	 * @return the issuerGuid
 	 */
-    @JsonProperty("signed_by")
+    @JsonProperty("issuer_guid")
     @JsonView(Views.Public.class)
-	public String getSignedBy();
+	public String getIssuerGuid();
 	/**
-	 * @param signedBy the signedBy to set
+	 * @param issuerGuid the issuerGuid to set
 	 */
-    @JsonProperty("signed_by")
-	public void setSignedBy(String signedBy);
+    @JsonProperty("issuer_guid")
+	public void setIssuerGuid(String issuerGuid);
 
 }

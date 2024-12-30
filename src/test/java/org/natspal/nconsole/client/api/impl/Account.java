@@ -25,7 +25,7 @@ public class Account extends AbstractSecretEntity<AccountConfig>  implements IAc
     
     private String operatorGuid; 
     
-    private String signedBy; 
+    private String issuerGuid; 
     
     // --------------------------------------------
     // Constructors
@@ -66,19 +66,19 @@ public class Account extends AbstractSecretEntity<AccountConfig>  implements IAc
     }
     
     /**
-	 * @return the signedBy
+	 * @return the issuerGuid
 	 */
     @Override
-	public String getSignedBy() {
-		return signedBy;
+	public String getIssuerGuid() {
+		return issuerGuid;
 	}
 
 	/**
-	 * @param signedBy the signedBy to set
+	 * @param issuerGuid the issuerGuid to set
 	 */
     @Override
-	public void setSignedBy(String signedBy) {
-		this.signedBy = signedBy;
+	public void setIssuerGuid(String issuerGuid) {
+		this.issuerGuid = issuerGuid;
 	}
 
 }
