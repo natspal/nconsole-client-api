@@ -79,6 +79,8 @@ public interface IPersistentContext {
     
     IOperator<IOperatorConfig> findOperatorByIdKey(String idKey) throws DataAccessException;
     
+    IOperator<IOperatorConfig> findOperatorByGuid(String guid) throws DataAccessException;
+    
     String findOperatorIdentitySeedByIdKey(String idKey) throws DataAccessException;
     
     String findOperatorIdentitySeedByName(String name) throws DataAccessException;

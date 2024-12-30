@@ -136,7 +136,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @return the jwt
     */
    @JsonProperty("jwt")
-   @JsonIgnore
+   //@JsonIgnore
    @JsonView(Views.Public.class)
    public String getJwt();
 
@@ -144,7 +144,7 @@ public interface ISecretEntity<T> extends Serializable, IAuditMetadata {
     * @param jwt the jwt to set
     */
    @JsonProperty("jwt")
-   @JsonIgnore
+   //@JsonIgnore
    public void setJwt(String jwt);
    
 
