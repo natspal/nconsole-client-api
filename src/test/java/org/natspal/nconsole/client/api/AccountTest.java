@@ -54,6 +54,7 @@ public class AccountTest {
             + " \"iat\": 1660937715,\n"
             + " \"exp\": 1726642150,\n"
             + " \"iss\": \"OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK\",\n"
+            + " \"issuer_guid\": \"signing_key_test\",\n"
             + " \"jti\": \"S3EQRFJAVD43OILV4H7FXMOUJQZTY7HRLRWO3MTWGPPX2IJGJUSA\",\n"
             + " \"name\": \"amitaccount\",\n"
             + " \"nats\": {\n"
@@ -126,6 +127,7 @@ public class AccountTest {
         assertEquals(1726642150, account.getExpiry());
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", account.getIssuer());
+        assertEquals("signing_key_test", account.getIssuerGuid());
         assertEquals("amitaccount", account.getName());
         
         assertEquals("ACHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM", account.getSubject());
@@ -239,6 +241,7 @@ public class AccountTest {
         account.setExpiry(1726642150l);
         
         account.setIssuer("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK");
+        account.setIssuerGuid("signing_key_test");
         
         account.setName("amitaccount");
         
@@ -342,6 +345,7 @@ public class AccountTest {
         assertEquals(Integer.valueOf(1726642150), doc.read("$.exp"));
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", doc.read("$.iss"));
+        assertEquals("signing_key_test", doc.read("$.issuer_guid"));
         assertEquals("amitaccount", doc.read("$.name"));
         
         assertEquals("ACHFNBTJPVIZC7B6ZSXDFWZHFOVQWJ5LZTI2UJJKCHXGE6ND5J3VNERM", doc.read("$.sub"));

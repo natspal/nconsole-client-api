@@ -28,6 +28,7 @@ public interface JwtClaims {
 
     //Payload
     String ISSUER = "iss";
+    String ISSUER_GUID = "issuer_guid";
     String SUBJECT = "sub";
     String NATS = "nats";
     String ISSUED_AT = "iat";

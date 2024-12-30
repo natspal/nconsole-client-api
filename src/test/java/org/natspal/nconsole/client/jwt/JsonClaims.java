@@ -39,7 +39,7 @@ public interface JsonClaims extends JwtClaims {
 		String DESCRIPTION 		= "description";
 		String ISSUE_AT 		= "iat";
 		String EXPIRE_AT 		= "exp";
-		String ID 				= "id";
+		String GUID 			= "guid";
 		String IS_DEFAULT 		= "is_default";
 		String KEY 				= "key";
 		String ENTITY_TYPE 		= "entity_type";

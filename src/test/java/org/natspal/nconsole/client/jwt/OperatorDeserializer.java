@@ -57,6 +57,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         String id = getString(tree, JsonClaims.GUID);
         
         String issuer = getString(tree, JwtClaims.ISSUER);
+        String issuerGuid = getString(tree, JwtClaims.ISSUER_GUID);
         String subject = getString(tree, JwtClaims.SUBJECT);
         String name = getString(tree, JwtClaims.NAME);
         
@@ -75,7 +76,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         		String  description = getString(map, JsonClaims.SIGNING_KEY.DESCRIPTION);
         		Long    issueAt 	= getLong(map, JsonClaims.SIGNING_KEY.ISSUE_AT);
         		Long    expireAt    = getLong(map, JsonClaims.SIGNING_KEY.EXPIRE_AT);
-        		String  sid 		= getString(map, JsonClaims.SIGNING_KEY.ID);
+        		String  sid 		= getString(map, JsonClaims.SIGNING_KEY.GUID);
         		Boolean isDefault   = getBoolean(map, JsonClaims.SIGNING_KEY.IS_DEFAULT);
         		String  key         = getString(map, JsonClaims.SIGNING_KEY.KEY);
         		String entityType   = getString(map, JsonClaims.SIGNING_KEY.ENTITY_TYPE);
@@ -122,6 +123,7 @@ class OperatorDeserializer extends SecretEntityDeserializer<Operator> {
         
         operator.setGuid(id);
         
+        operator.setIssuerGuid(issuerGuid);
         operator.setCreateDate(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_DATE));
         operator.setUpdateDate(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_DATE));
         operator.setUpdateUserId(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_USER_ID));

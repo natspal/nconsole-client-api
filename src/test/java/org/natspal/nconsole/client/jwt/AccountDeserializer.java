@@ -62,6 +62,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
         String id = getString(tree, JsonClaims.GUID);
         
         String issuer = getString(tree, JwtClaims.ISSUER);
+        String issuerGuid = getString(tree, JwtClaims.ISSUER_GUID);
         String subject = getString(tree, JwtClaims.SUBJECT);
         String name = getString(tree, JwtClaims.NAME);
         
@@ -109,6 +110,7 @@ class AccountDeserializer extends SecretEntityDeserializer<Account> {
         Account account = new Account(operatorGuid,jwtId, issuedAt,expiry, issuer, name, subject, accountConfig);
         
         account.setGuid(id);
+        account.setIssuerGuid(issuerGuid);
         account.setCreateDate(getLong(tree, JsonClaims.AUDIT_DATA.CREATE_DATE));
         account.setUpdateDate(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_DATE));
         account.setUpdateUserId(getLong(tree, JsonClaims.AUDIT_DATA.UPDATE_USER_ID));

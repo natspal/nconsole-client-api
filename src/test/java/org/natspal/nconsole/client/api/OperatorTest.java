@@ -53,6 +53,7 @@ public class OperatorTest {
             + "  \"iat\": 1634840614,\n"
             + "  \"exp\": 1726642150,\n"
             + "  \"iss\": \"OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK\",\n"
+            + "  \"issuer_guid\": \"key-1234567890abcdef\",\n"
             + "  \"name\": \"amit\",\n"
             + "  \"sub\": \"OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK\",\n"
             + "  \"nats\": {\n"
@@ -71,7 +72,7 @@ public class OperatorTest {
             + "  	\"description\": \"Primary signing key for production environment\",\n"
             + "  	\"iat\": 1698203628000,\n"
             + "  	\"exp\": 1713763628000,\n"
-            + "  	\"id\": \"key-1234567890abcdef\",\n"
+            + "  	\"guid\": \"key-1234567890abcdef\",\n"
             + "  	\"is_default\": true,\n"
             + "  	\"key\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnw5MfVpHxQ\",\n"
             + "  	\"entity_type\": \"operator\",\n"
@@ -110,6 +111,7 @@ public class OperatorTest {
         assertEquals(1726642150, operator.getExpiry());
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", operator.getIssuer());
+        assertEquals("key-1234567890abcdef",operator.getIssuerGuid());
         assertEquals("amit", operator.getName());
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", operator.getSubject());
@@ -183,6 +185,7 @@ public class OperatorTest {
         operator.setExpiry(1726642150l);
         
         operator.setIssuer("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK");
+        operator.setIssuerGuid("key-1234567890abcdef");
         
         operator.setName("amit");
         
@@ -251,6 +254,7 @@ public class OperatorTest {
         assertEquals(Integer.valueOf(1726642150), doc.read("$.exp"));
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", doc.read("$.iss"));
+        assertEquals("key-1234567890abcdef", doc.read("$.issuer_guid"));
         assertEquals("amit", doc.read("$.name"));
         
         assertEquals("OAUL4MS7IANRZ3BMHTQ3IAKYDFL436VB7O3ZFXC2DHFEXPSJUWBGFZGK", doc.read("$.sub"));
