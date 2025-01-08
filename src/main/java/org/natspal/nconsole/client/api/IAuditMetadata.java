@@ -29,7 +29,7 @@ public interface IAuditMetadata {
 	/**
 	 * @return the createUserId
 	 */
-	@JsonProperty("create_user_id")
+	@JsonProperty(value = "create_user_id", access = JsonProperty.Access.READ_ONLY)
 	@JsonView(Views.Public.class)
 	public Long getCreateUserId();
 
@@ -42,7 +42,7 @@ public interface IAuditMetadata {
 	/**
 	 * @return the updateUserId
 	 */
-	@JsonProperty("update_user_id")
+	@JsonProperty(value="update_user_id" , access = JsonProperty.Access.READ_ONLY)
 	@JsonView(Views.Public.class)
 	public Long getUpdateUserId();
 
@@ -55,7 +55,7 @@ public interface IAuditMetadata {
 	/**
 	 * @return the createDate
 	 */
-	@JsonProperty("create_date")
+	@JsonProperty(value ="create_date", access = JsonProperty.Access.READ_ONLY)
 	@JsonView(Views.Public.class)
 	public Long getCreateDate();
 
@@ -68,7 +68,7 @@ public interface IAuditMetadata {
 	/**
 	 * @return the updateDate
 	 */
-	@JsonProperty("update_date")
+	@JsonProperty(value="update_date", access = JsonProperty.Access.READ_ONLY)
 	@JsonView(Views.Public.class)
 	public Long getUpdateDate();
 

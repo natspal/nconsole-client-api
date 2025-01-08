@@ -39,7 +39,7 @@ public interface ISigningKey extends IAuditMetadata {
 	/**
 	 * @return the issueAt
 	 */
-	@JsonProperty("iat")
+	@JsonProperty(value = "iat", access = JsonProperty.Access.READ_ONLY)
 	public Long getIssueAt();
 
 	/**
@@ -87,7 +87,7 @@ public interface ISigningKey extends IAuditMetadata {
 	/**
 	 * @return the key
 	 */
-	@JsonProperty("key")
+	@JsonProperty(value="key", access = JsonProperty.Access.READ_ONLY)
 	public String getKey();
 
 	/**
@@ -99,7 +99,7 @@ public interface ISigningKey extends IAuditMetadata {
 	/**
 	 * @return the secret
 	 */
-	@JsonProperty("secret")
+	@JsonProperty(value = "secret", access = JsonProperty.Access.READ_ONLY)
 	@JsonIgnore
 	public String getSecret();
 
@@ -138,7 +138,7 @@ public interface ISigningKey extends IAuditMetadata {
 	/**
 	 * @return the entityGuid
 	 */
-	@JsonProperty("entity_guid")
+	@JsonProperty(value= "entity_guid", access = JsonProperty.Access.READ_ONLY)
 	public String getEntityGuid();
 
 	/**
@@ -150,7 +150,7 @@ public interface ISigningKey extends IAuditMetadata {
 	/**
 	 * @return the ancestorGuid
 	 */
-	@JsonProperty("ancestor_guid")
+	@JsonProperty(value ="ancestor_guid", access = JsonProperty.Access.READ_ONLY)
 	public String getAncestorGuid();
 
 	/**
