@@ -147,6 +147,9 @@ public interface IPersistentContext {
 			  					,KeyType keyType
 			  					,EntityType entityType)          		     throws DataAccessException;
 	
+	List<ISigningKey>  findAllSigningKeys(EntityType entityType
+										 ,KeyType keyType)					 throws DataAccessException;
+	
 	List<ISigningKey>  findOperatorSigningKeys(String entityGuid
 											  ,String ancestorGuid)          throws DataAccessException;
 	

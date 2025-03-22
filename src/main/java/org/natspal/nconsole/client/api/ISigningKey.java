@@ -29,12 +29,25 @@ public interface ISigningKey extends IAuditMetadata {
 	 */
 	@JsonProperty("description")
 	public String getDescription();
-
+	
 	/**
 	 * @param description the description to set
 	 */
 	@JsonProperty("description")
 	public void setDescription(String description);
+	
+	/**
+	 * @return the name
+	 */
+	@JsonProperty("name")
+	public String getName();
+	
+	/**
+	 * @param name the name to set
+	 */
+	@JsonProperty("name")
+	public void setName(String name);
+	
 	
 	/**
 	 * @return the issueAt

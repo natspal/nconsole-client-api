@@ -30,6 +30,8 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 
 	private String description;
 	
+	private String name;
+	
 	private Long issueAt;
 
 	private Long expiry;
@@ -81,6 +83,16 @@ public class SigningKey extends AuditMetadata implements ISigningKey {
 	@Override
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
